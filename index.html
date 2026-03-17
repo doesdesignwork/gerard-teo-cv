@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerard Teo — Senior Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:    #FFFFFF;
+  --bg:       #F5F5F7;
+  --surface:  #FFFFFF;
+  --border:   #D2D2D7;
+  --border-lt:#E8E8ED;
+  --text:     #1D1D1F;
+  --text-2:   #3A3A3C;
+  --text-3:   #6E6E73;
+  --text-4:   #AEAEB2;
+  --blue:     #0071E3;
+  --blue-dk:  #0055B3;
+  --f:        'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--f);
+  min-height: 100vh;
+}
+
+/* ── TOPBAR ──────────────────────────────────────────────────── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(255,255,255,0.82);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border-lt);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 48px;
+}
+
+.topbar-name {
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em; color: var(--text);
+}
+
+.topbar-role {
+  font-size: 12px; color: var(--text-3); font-weight: 400;
+}
+
+.pdf-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue); color: #fff;
+  border: none; border-radius: 980px;
+  padding: 7px 16px;
+  font-family: var(--f); font-size: 12px; font-weight: 600;
+  letter-spacing: -0.01em; cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.pdf-btn:hover { background: var(--blue-dk); }
+.pdf-btn:active { transform: scale(0.97); }
+
+/* ── OUTER WRAP ──────────────────────────────────────────────── */
+.outer {
+  padding: 80px 20px 60px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+
+/* ── CARD BASE ───────────────────────────────────────────────── */
+.card {
+  width: 100%; max-width: 800px;
+  background: var(--surface);
+  border-radius: 18px;
+  border: 1px solid var(--border-lt);
+  overflow: hidden;
+  opacity: 0;
+  animation: rise 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.10s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.20s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.30s; }
+.card:nth-child(7) { animation-delay: 0.35s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HERO CARD ───────────────────────────────────────────────── */
+.hero-card {
+  padding: 52px 52px 44px;
+}
+
+.hero-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
+}
+
+.hero-name {
+  font-size: 52px; font-weight: 800; letter-spacing: -0.04em;
+  color: var(--text); line-height: 1; margin-bottom: 10px;
+}
+
+.hero-title {
+  font-size: 17px; font-weight: 400; color: var(--text-3);
+  letter-spacing: -0.02em; margin-bottom: 28px;
+}
+
+.hero-summary {
+  font-size: 14px; line-height: 1.75; color: var(--text-2);
+  font-weight: 400; max-width: 580px; letter-spacing: -0.01em;
+}
+
+.contact-row {
+  display: flex; flex-wrap: wrap; gap: 0;
+  margin-top: 28px;
+  border-top: 1px solid var(--border-lt); padding-top: 20px;
+}
+
+.contact-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text-3); font-weight: 500;
+  padding-right: 20px; margin-right: 20px;
+  border-right: 1px solid var(--border-lt);
+}
+.contact-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.contact-item a { color: var(--blue); text-decoration: none; }
+.contact-item a:hover { text-decoration: underline; }
+
+/* ── METRICS CARD ────────────────────────────────────────────── */
+.metrics-card {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 0; overflow: hidden;
+}
+
+.metric-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border-lt);
+  text-align: center;
+}
+.metric-cell:last-child { border-right: none; }
+
+.metric-num {
+  font-size: 36px; font-weight: 800; letter-spacing: -0.04em;
+  color: var(--text); line-height: 1; display: block; margin-bottom: 5px;
+}
+.metric-num sup {
+  font-size: 18px; font-weight: 700; vertical-align: super; color: var(--blue);
+}
+
+.metric-desc {
+  font-size: 11px; color: var(--text-3); font-weight: 500;
+  letter-spacing: 0.02em; line-height: 1.4;
+}
+
+/* ── SECTION CARD ─────────────────────────────────────────────── */
+.section-card { padding: 36px 52px; }
+
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-4);
+  margin-bottom: 24px;
+}
+
+/* ── JOB ──────────────────────────────────────────────────────── */
+.job { padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid var(--border-lt); }
+.job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+.job-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 16px; margin-bottom: 2px; flex-wrap: wrap;
+}
+
+.job-role {
+  font-size: 16px; font-weight: 700; color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.job-date {
+  font-size: 12px; color: var(--text-3); font-weight: 500;
+  white-space: nowrap; flex-shrink: 0; padding-top: 2px;
+}
+
+.job-meta {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+}
+
+.job-co {
+  font-size: 13px; font-weight: 600; color: var(--blue);
+  letter-spacing: -0.01em;
+}
+
+.job-clients {
+  font-size: 11.5px; color: var(--text-3); font-weight: 400;
+}
+
+.bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+
+.bullets li {
+  font-size: 13px; line-height: 1.65; color: var(--text-2);
+  font-weight: 400; letter-spacing: -0.01em;
+  padding-left: 16px; position: relative;
+}
+
+.bullets li::before {
+  content: '';
+  position: absolute; left: 0; top: 9px;
+  width: 4px; height: 4px;
+  background: var(--blue); border-radius: 50%;
+}
+
+.bullets li strong { color: var(--text); font-weight: 600; }
+
+/* ── SKILLS GRID ─────────────────────────────────────────────── */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 10px;
+}
+
+.skill-block {
+  background: var(--bg); border-radius: 10px; padding: 16px 18px;
+}
+
+.skill-cat {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;
+}
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.skill-tag {
+  font-size: 11px; font-weight: 500; color: var(--text-2);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 980px; padding: 3px 10px;
+}
+
+/* ── TOOLS STRIP ─────────────────────────────────────────────── */
+.tools-strip {
+  padding: 24px 52px;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+
+.tool-pill {
+  font-size: 12px; font-weight: 500; color: var(--text-2);
+  background: var(--bg); border-radius: 980px;
+  padding: 5px 14px; letter-spacing: -0.01em;
+}
+
+/* ── PORTFOLIO CARD ──────────────────────────────────────────── */
+.portfolio-card {
+  padding: 28px 52px;
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+}
+
+.portfolio-label {
+  font-size: 12px; font-weight: 600; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-right: 6px;
+}
+
+.pf-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; color: var(--blue);
+  text-decoration: none; border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 14px;
+  transition: all 0.15s;
+}
+.pf-link:hover { background: var(--bg); border-color: var(--blue); }
+
+/* ── EDUCATION ───────────────────────────────────────────────── */
+.edu-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 10px;
+}
+
+.edu-item {
+  background: var(--bg); border-radius: 10px; padding: 14px 16px;
+  font-size: 12.5px; color: var(--text-2); font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ── PRINT ───────────────────────────────────────────────────── */
+@media print {
+  @page { margin: 0; size: A4; }
+
+  body { background: white; }
+  .topbar { display: none !important; }
+  .outer { padding: 20px 16px; gap: 8px; }
+
+  .card {
+    border-radius: 10px; opacity: 1 !important;
+    animation: none !important; transform: none !important;
+    page-break-inside: avoid;
+    border: 1px solid #E8E8ED;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .hero-card { padding: 32px 36px 28px; }
+  .hero-name { font-size: 38px; }
+  .hero-summary { font-size: 12px; }
+
+  .metric-num { font-size: 28px; }
+
+  .section-card { padding: 24px 36px; }
+  .tools-strip { padding: 18px 36px; }
+  .portfolio-card { padding: 18px 36px; }
+
+  .bullets li { font-size: 11.5px; }
+  .job { page-break-inside: avoid; }
+
+  .skills-grid { grid-template-columns: repeat(3,1fr); }
+
+  .outer { max-width: 100%; }
+  .card { max-width: 100%; }
+
+  /* Force bg colors on print */
+  .metric-cell, .skill-block, .edu-item, .tool-pill, .bg-bg { 
+    background: #F5F5F7 !important; 
+  }
+  .metrics-card .metric-num sup, .bullets li::before, .hero-eyebrow, .job-co, .pf-link {
+    color: #0071E3 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-card { padding: 32px 24px; }
+  .hero-name { font-size: 36px; }
+  .section-card { padding: 28px 24px; }
+  .tools-strip { padding: 20px 24px; }
+  .portfolio-card { padding: 20px 24px; }
+  .metrics-card { grid-template-columns: repeat(2,1fr); }
+  .metric-cell:nth-child(2) { border-right: none; }
+  .metric-cell:nth-child(3) { border-top: 1px solid var(--border-lt); }
+  .metric-cell:nth-child(4) { border-top: 1px solid var(--border-lt); border-right: none; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .contact-item { border-right: none; padding-right: 0; margin-right: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar" role="banner">
+  <div>
+    <span class="topbar-name">Gerard Teo</span>
+    <span class="topbar-role"> &nbsp;·&nbsp; Senior Graphic Designer</span>
+  </div>
+  <button class="pdf-btn" onclick="window.print()">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</header>
+
+<main class="outer" role="main" id="main-content">
+
+  <!-- ① HERO ──────────────────────────────────────────────────── -->
+  <article class="card hero-card" aria-label="Profile">
+    <p class="hero-eyebrow">Senior Graphic Designer</p>
+    <h1 class="hero-name">Gerard Teo</h1>
+    <p class="hero-title">Branding &nbsp;·&nbsp; Digital Campaigns &nbsp;·&nbsp; Print Production &nbsp;·&nbsp; Singapore</p>
+    <p class="hero-summary">
+      Senior graphic designer with 15+ years delivering brand-compliant, production-ready creative for global brands including Apple, L'Oréal, and Unilever. Known for meticulous artwork setup, strong typographic judgment, and reliable multi-project delivery across ATL/BTL, print, digital, and motion formats. Comfortable enforcing global brand standards while tailoring for local relevance.
+    </p>
+    <address class="contact-row" aria-label="Contact information">
+      <span class="contact-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Singapore
+      </span>
+      <span class="contact-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        +65 9878 2541
+      </span>
+      <span class="contact-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:gerard.ben.teo@gmail.com">gerard.ben.teo@gmail.com</a>
+      </span>
+      <span class="contact-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://www.linkedin.com/in/gerard-teo-0b106429/" target="_blank">LinkedIn</a>
+      </span>
+    </address>
+  </article>
+
+  <!-- ② METRICS ────────────────────────────────────────────────── -->
+  <section class="card metrics-card" aria-label="Key achievements">
+    <div class="metric-cell">
+      <span class="metric-num">15<sup>+</sup></span>
+      <span class="metric-desc">Years delivering<br>brand-grade creative</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-num">40<sup>%</sup></span>
+      <span class="metric-desc">Higher first-submission<br>approval rate (Hogarth)</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-num">30<sup>%</sup></span>
+      <span class="metric-desc">Fewer review cycles<br>via QA standardisation</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-num">35<sup>%</sup></span>
+      <span class="metric-desc">Rework reduction<br>across multiple studios</span>
+    </div>
+  </section>
+
+  <!-- ③ EXPERIENCE ─────────────────────────────────────────────── -->
+  <section class="card section-card" aria-label="Work experience">
+    <h2 class="section-label">Experience</h2>
+
+    <div class="job">
+      <div class="job-top">
+        <h3 class="job-role">Content Designer — Apple Account</h3>
+        <time class="job-date" datetime="2021-09/2022-11">Sep 2021 – Nov 2022</time>
+      </div>
+      <div class="job-meta">
+        <span class="job-co">Hogarth Worldwide</span>
+        <span class="job-clients">· Singapore</span>
+      </div>
+      <ul class="bullets">
+        <li>Maintained <strong>100% brand compliance</strong> across all digital storefront and campaign assets through rigorous audits against Apple's exacting guidelines.</li>
+        <li>Achieved a <strong>40% higher first-submission approval rate</strong> by strengthening pre-delivery QA and brief interpretation, eliminating avoidable revision cycles.</li>
+        <li>Delivered production-ready campaign visuals within a <strong>24-hour turnaround</strong> via sprint-based workflows with structured review checkpoints.</li>
+        <li>Reduced external vendor rework by <strong>35%</strong> by coaching production partners on artwork specs and Apple quality standards.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <h3 class="job-role">Freelance Designer</h3>
+        <time class="job-date" datetime="2020-09/2024">Sep 2020 – 2024</time>
+      </div>
+      <div class="job-meta">
+        <span class="job-co">Northstar Travel Media</span>
+        <span class="job-clients">· Singapore</span>
+      </div>
+      <ul class="bullets">
+        <li>Lifted email open and click-through rates by <strong>25%</strong> through analytics-informed, responsive campaign templates.</li>
+        <li>Drove a <strong>20% increase in on-device conversions</strong> by developing mobile-first responsive design patterns.</li>
+        <li>Cut review cycles by <strong>30%</strong> by standardising a reusable template library and QA checklist, accelerating time-to-market.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <h3 class="job-role">Head of Art</h3>
+        <time class="job-date" datetime="2014-01/2024">Jan 2014 – 2024</time>
+      </div>
+      <div class="job-meta">
+        <span class="job-co">The Fat Oracle</span>
+        <span class="job-clients">· Clients: L'Oréal, Dow Chemical, UOB Travel, CEL Development, Spa Elements</span>
+      </div>
+      <ul class="bullets">
+        <li>Delivered projects averaging <strong>15% under budget</strong> through disciplined resource planning and lean production management.</li>
+        <li>Reduced creative-to-production bottlenecks by <strong>25%</strong> by re-engineering artwork hand-off processes and file delivery protocols.</li>
+        <li>Led full brand and packaging production cycles from concept through final print-ready artwork, including photorealistic 3D mock-ups that accelerated stakeholder sign-off.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <h3 class="job-role">Senior Designer</h3>
+        <time class="job-date" datetime="2013-09/2014-11">Sep 2013 – Nov 2014</time>
+      </div>
+      <div class="job-meta">
+        <span class="job-co">Crépuscule Asia</span>
+        <span class="job-clients">· Clients: Unilever, L'Oréal</span>
+      </div>
+      <ul class="bullets">
+        <li>Accelerated client approvals by <strong>35%</strong> through optimised CGI and photorealistic rendering pipelines for global campaigns.</li>
+        <li>Produced cohesive multi-channel asset suites — print, digital, and retail display — ensuring visual consistency across all market touchpoints.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <h3 class="job-role">Design Director · Co-Founder / Creative Director</h3>
+        <time class="job-date" datetime="2004/2013">2004 – 2013</time>
+      </div>
+      <div class="job-meta">
+        <span class="job-co">Orbital Group · Blacksheep Communications · CP&amp;GD Design Communications</span>
+      </div>
+      <div class="job-clients" style="margin-bottom:12px;">Clients: SingTel, MTV Asia, EMI Music, Cathay, Asia Pacific Breweries, Blackberry, Munich Automobiles, Sun Microsystems</div>
+      <ul class="bullets">
+        <li>Co-founded and scaled Blacksheep Communications from 3 to <strong>15 designers</strong>; achieved <strong>90% client retention</strong> and grew annual billings by <strong>60%</strong>.</li>
+        <li>Directed multi-channel brand campaigns — print, digital, outdoor, experiential — concept through final artwork.</li>
+        <li>Reduced rework by <strong>35%</strong> across studios by introducing standardised SOPs, peer-review checkpoints, and QA protocols.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ④ SKILLS ──────────────────────────────────────────────────── -->
+  <section class="card section-card" aria-label="Skills">
+    <h2 class="section-label">Core Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-cat">Brand Execution</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Global brand guidelines</span>
+          <span class="skill-tag">ATL / BTL</span>
+          <span class="skill-tag">Visual identity</span>
+          <span class="skill-tag">Local market adaptation</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Print Production</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Prepress</span>
+          <span class="skill-tag">Dielines</span>
+          <span class="skill-tag">Colour management</span>
+          <span class="skill-tag">Artwork setup</span>
+          <span class="skill-tag">Supplier liaison</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Digital &amp; Social</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Campaign visuals</span>
+          <span class="skill-tag">Social assets</span>
+          <span class="skill-tag">Email templates</span>
+          <span class="skill-tag">Web banners</span>
+          <span class="skill-tag">Adaptive sizing</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Typography &amp; Layout</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Grid systems</span>
+          <span class="skill-tag">Visual hierarchy</span>
+          <span class="skill-tag">Composition</span>
+          <span class="skill-tag">Multi-format layout</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Workflow &amp; QA</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Multi-project delivery</span>
+          <span class="skill-tag">QA checklists</span>
+          <span class="skill-tag">Sprint workflow</span>
+          <span class="skill-tag">Version control</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Bonus</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Motion graphics</span>
+          <span class="skill-tag">3D mock-ups</span>
+          <span class="skill-tag">CGI rendering</span>
+          <span class="skill-tag">Figma / Webflow</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ TOOLS ───────────────────────────────────────────────────── -->
+  <section class="card tools-strip" aria-label="Software tools">
+    <h2 class="section-label" style="margin-bottom:0;margin-right:16px;flex-shrink:0;">Tools</h2>
+    <span class="tool-pill">Adobe Photoshop</span>
+    <span class="tool-pill">Illustrator</span>
+    <span class="tool-pill">InDesign</span>
+    <span class="tool-pill">After Effects</span>
+    <span class="tool-pill">Figma</span>
+    <span class="tool-pill">Webflow</span>
+    <span class="tool-pill">Spline 3D</span>
+    <span class="tool-pill">Blender</span>
+    <span class="tool-pill">Cinema 4D</span>
+    <span class="tool-pill">Microsoft Office</span>
+  </section>
+
+  <!-- ⑥ EDUCATION ──────────────────────────────────────────────── -->
+  <section class="card section-card" aria-label="Education and certifications">
+    <h2 class="section-label">Education &amp; Certifications</h2>
+    <div class="edu-grid">
+      <div class="edu-item" style="grid-column: 1 / -1; border-left: 3px solid #0071E3; background: #F0F6FF; padding-left: 16px;">
+        <span style="font-weight:700; color:#0071E3; font-size:11px; letter-spacing:0.06em; text-transform:uppercase;">Current</span><br>
+        NTU-PaCE (SCTP) Advanced Professional Certificate in UX Design and Digital Product Management<br>
+        <span style="color:#6E6E73; font-size:11.5px;">Oct 2025 – Mar 2026</span>
+      </div>
+      <div class="edu-item">GCE 'O' Levels</div>
+      <div class="edu-item">Professional Certificate in Web Development</div>
+      <div class="edu-item">NTUC SCTP Data Analytics Certification</div>
+      <div class="edu-item">MAGES Adobe After Effects Certification</div>
+    </div>
+  </section>
+
+  <!-- ⑦ PORTFOLIO ──────────────────────────────────────────────── -->
+  <section class="card portfolio-card" aria-label="Portfolio links">
+    <span class="portfolio-label">Portfolio</span>
+    <a class="pf-link" href="https://gerardteo.myportfolio.com/work" target="_blank">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Website
+    </a>
+    <a class="pf-link" href="https://indd.adobe.com/view/62fab07e-b7a9-420a-b20c-c68fc232ec84" target="_blank">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      PDF Portfolio
+    </a>
+    <a class="pf-link" href="https://www.linkedin.com/in/gerard-teo-0b106429/" target="_blank">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </section>
+
+</main>
+</body>
+</html>
