@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gerard Teo — Senior Graphic Designer & Art Director, Singapore</title>
-  <meta name="description" content="Gerard Teo is a Singapore-based senior graphic designer and art director with 20+ years across branding, campaigns, events, packaging, 3D visualisation and creative leadership.">
+  <title>Gerard Teo — Designer & Creative Lead, Singapore</title>
+  <meta name="description" content="Gerard Teo is a Singapore-based designer and creative lead working across branding, campaigns, events, packaging and 3D visualisation.">
   <meta name="author" content="Gerard Teo">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://doesdesignwork.github.io/gerard-teo-cv/">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Gerard Teo — Senior Graphic Designer & Art Director">
-  <meta property="og:description" content="Brand systems, campaigns, events, packaging, 3D visualisation and creative leadership.">
+  <meta property="og:title" content="Gerard Teo — Designer & Creative Lead">
+  <meta property="og:description" content="Branding, campaigns, events, packaging, 3D visualisation and creative direction.">
   <meta property="og:url" content="https://doesdesignwork.github.io/gerard-teo-cv/">
-  <meta name="theme-color" content="#111a29">
+  <meta name="theme-color" content="#efeee9">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Gerard Teo",
-    "jobTitle": "Senior Graphic Designer and Art Director",
+    "jobTitle": "Designer and Creative Lead",
     "email": "mailto:gerard.ben.teo@gmail.com",
     "telephone": "+65 9878 2541",
     "url": "https://gerardteo.myportfolio.com/work",
@@ -28,16 +28,14 @@
   </script>
   <style>
     :root {
-      --ink: #111a29;
-      --ink-soft: #536073;
-      --paper: #f5f2eb;
-      --paper-light: #fbfaf7;
-      --accent: #ed4b25;
-      --line: rgba(17, 26, 41, .18);
-      --line-dark: rgba(245, 242, 235, .22);
-      --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --paper: #efeee9;
+      --ink: #161616;
+      --muted: #66655f;
+      --line: #c8c6be;
+      --red: #c63d2f;
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
       --serif: Georgia, "Times New Roman", serif;
-      --max: 1180px;
+      --max: 1160px;
     }
 
     * { box-sizing: border-box; }
@@ -48,364 +46,381 @@
       color: var(--ink);
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
-    a { color: inherit; }
+    a { color: inherit; text-underline-offset: 3px; }
     button { font: inherit; }
-    .skip-link {
-      position: fixed; left: 16px; top: -80px; z-index: 1000;
-      padding: 10px 14px; background: var(--accent); color: white;
-      text-decoration: none;
-    }
+    .wrap { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+    .skip-link { position: fixed; top: -60px; left: 16px; z-index: 20; background: var(--ink); color: white; padding: 10px 14px; }
     .skip-link:focus { top: 16px; }
 
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(17,26,41,.96); color: var(--paper);
-      border-bottom: 1px solid var(--line-dark);
+    .masthead {
+      padding: 22px 0 18px;
+      border-bottom: 1px solid var(--ink);
     }
-    .nav-inner {
-      width: min(calc(100% - 40px), var(--max)); margin: auto;
-      min-height: 64px; display: flex; align-items: center;
-      justify-content: space-between; gap: 24px;
+    .masthead .wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
     }
-    .wordmark { font-weight: 760; letter-spacing: -.03em; white-space: nowrap; }
-    .controls { display: flex; align-items: center; gap: 8px; }
-    .switch {
-      display: flex; padding: 4px; border: 1px solid var(--line-dark);
-      border-radius: 999px;
-    }
-    .switch button, .action {
-      border: 0; background: transparent; color: #c9ced7;
-      cursor: pointer; border-radius: 999px; padding: 8px 14px;
-      font-size: 12px; font-weight: 700; letter-spacing: .02em;
-    }
-    .switch button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
-    .action { color: white; border: 1px solid var(--line-dark); }
-    .action:hover, .action:focus-visible { border-color: var(--accent); }
+    .edition { margin: 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .mast-links { display: flex; gap: 22px; font-size: 12px; }
 
-    .hero { background: var(--ink); color: var(--paper); }
-    .hero-inner {
-      width: min(calc(100% - 40px), var(--max)); margin: auto;
-      padding: clamp(72px, 11vw, 144px) 0 72px;
-      display: grid; grid-template-columns: 1fr 260px; gap: 64px;
+    .intro {
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      gap: 76px;
+      padding: 74px 0 88px;
+      border-bottom: 1px solid var(--ink);
     }
-    .eyebrow, .section-label, .proof-label, .meta-label {
-      margin: 0 0 16px; color: var(--accent); font-size: 11px;
-      font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
-    }
+    .kicker { margin: 0 0 18px; color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
     h1 {
-      margin: 0; font-size: clamp(62px, 11vw, 144px); line-height: .84;
-      letter-spacing: -.075em; font-weight: 820;
+      margin: 0;
+      font-size: clamp(58px, 9vw, 112px);
+      line-height: .88;
+      letter-spacing: -.065em;
+      font-weight: 700;
     }
-    .role-title {
-      margin: 28px 0 0; color: var(--accent);
-      font-size: clamp(20px, 3vw, 34px); letter-spacing: -.035em; font-weight: 750;
+    .role { margin: 25px 0 0; font-size: clamp(20px, 2.5vw, 31px); letter-spacing: -.03em; }
+    .intro-copy { align-self: end; }
+    .summary {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(23px, 2.5vw, 32px);
+      line-height: 1.25;
+      letter-spacing: -.018em;
     }
-    .statement {
-      margin: 64px 0 0; max-width: 850px;
-      font-family: var(--serif); font-size: clamp(30px, 4.2vw, 54px);
-      line-height: 1.12; letter-spacing: -.025em;
+    .mode-switch { display: flex; gap: 6px; margin-top: 30px; }
+    .mode-switch button {
+      appearance: none;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      padding: 8px 11px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: .035em;
     }
-    .subline { margin: 22px 0 0; color: #b9c0cc; font-size: 16px; line-height: 1.6; }
-    .contact { align-self: end; padding-bottom: 5px; }
-    .contact a, .contact span {
-      display: block; padding: 10px 0; color: #d8dce4;
-      border-bottom: 1px solid var(--line-dark); text-decoration: none;
-      font-size: 14px;
-    }
-    .contact a:hover { color: var(--accent); }
+    .mode-switch button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .mode-switch button:hover, .mode-switch button:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
-    .proof { background: var(--ink); color: var(--paper); border-top: 1px solid var(--line-dark); }
-    .proof-inner {
-      width: min(calc(100% - 40px), var(--max)); margin: auto;
-      display: grid; grid-template-columns: repeat(3, 1fr);
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(245px, 1fr);
+      gap: 76px;
+      padding: 82px 0 110px;
     }
-    .proof-item { padding: 42px 36px 48px 0; border-right: 1px solid var(--line-dark); }
-    .proof-item + .proof-item { padding-left: 36px; }
-    .proof-item:last-child { border-right: 0; }
-    .proof-value { display: block; font-size: clamp(36px, 5vw, 68px); font-weight: 820; letter-spacing: -.06em; }
-    .proof-label { display: block; margin: 7px 0 10px; }
-    .proof-desc { color: #b9c0cc; line-height: 1.45; font-size: 14px; }
-
-    .section { width: min(calc(100% - 40px), var(--max)); margin: auto; padding: 104px 0; }
-    .section-head {
-      display: grid; grid-template-columns: 220px 1fr; align-items: center;
-      gap: 32px; margin-bottom: 44px;
+    section + section { margin-top: 78px; }
+    .section-title {
+      margin: 0 0 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
     }
-    .section-label { margin: 0; }
-    .rule { height: 1px; background: var(--line); }
-    .now-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-    .position h3 { margin: 0 0 8px; font-size: clamp(24px, 2.6vw, 36px); letter-spacing: -.04em; }
-    .position-meta { margin: 0; color: var(--ink-soft); line-height: 1.5; }
-    .position-date { color: var(--accent); }
-    .position-scope { margin: 20px 0 0; max-width: 520px; font-size: 18px; line-height: 1.5; }
-
-    .history { padding-top: 0; }
-    .history-row {
-      display: grid; grid-template-columns: 180px 1fr; gap: 34px;
-      padding: 30px 0; border-top: 1px solid var(--line);
+    .job {
+      display: grid;
+      grid-template-columns: 132px minmax(0, 1fr);
+      gap: 24px;
+      padding: 24px 0 28px;
+      border-bottom: 1px solid var(--line);
     }
-    .history-date { color: var(--accent); font-weight: 750; font-size: 13px; }
-    .history-role { margin: 0 0 5px; font-size: 21px; letter-spacing: -.025em; }
-    .history-meta, .history-scope { margin: 0; color: var(--ink-soft); line-height: 1.5; }
-    .history-scope { margin-top: 6px; color: var(--ink); }
+    .job-date { color: var(--red); font-size: 12px; font-weight: 700; line-height: 1.4; }
+    .job h3 { margin: 0; font-size: 19px; line-height: 1.2; letter-spacing: -.018em; }
+    .company { margin: 5px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .job-copy { margin: 10px 0 0; max-width: 610px; font-size: 15px; line-height: 1.55; }
 
-    .capabilities { background: var(--paper-light); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 48px; }
-    .cap-item { padding: 30px 0 34px; border-top: 1px solid var(--line); }
-    .cap-index { color: var(--accent); font-size: 11px; font-weight: 800; }
-    .cap-item h3 { margin: 12px 0 10px; font-size: 20px; letter-spacing: -.025em; }
-    .cap-item p { margin: 0; color: var(--ink-soft); line-height: 1.5; }
+    .side { border-left: 1px solid var(--ink); padding-left: 28px; }
+    .side section + section { margin-top: 56px; }
+    .side-title { margin: 0 0 18px; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .side p, .side li { font-size: 14px; line-height: 1.55; }
+    .side p { margin: 0; }
+    .side p + p { margin-top: 17px; }
+    .plain-list { margin: 0; padding: 0; list-style: none; }
+    .plain-list li { padding: 9px 0; border-top: 1px solid var(--line); }
+    .contact-list a { display: block; padding: 9px 0; border-top: 1px solid var(--line); text-decoration: none; overflow-wrap: anywhere; }
+    .contact-list a:hover { color: var(--red); }
+    .note { color: var(--muted); }
 
-    .details-grid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 64px; }
-    .detail-block { border-top: 3px solid var(--ink); padding-top: 20px; }
-    .detail-block h2 { margin: 0 0 20px; color: var(--accent); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
-    .detail-block p { margin: 0; line-height: 1.55; }
-    .detail-block p + p { margin-top: 18px; }
-
-    footer { background: var(--ink); color: var(--paper); }
-    .footer-inner {
-      width: min(calc(100% - 40px), var(--max)); margin: auto;
-      padding: 48px 0; display: flex; justify-content: space-between; gap: 30px; align-items: end;
-    }
-    .footer-name { font-size: 26px; font-weight: 800; letter-spacing: -.04em; }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links a { color: #d8dce4; text-decoration: none; font-size: 13px; }
-    .footer-links a:hover { color: var(--accent); }
-
-    .fade { animation: fade .35s ease both; }
-    @keyframes fade { from { opacity: 0; transform: translateY(8px); } }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
+    footer { background: var(--ink); color: var(--paper); padding: 28px 0; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .footer-name { margin: 0; font-weight: 700; }
+    .footer-actions { display: flex; gap: 18px; align-items: center; }
+    .footer-actions a, .print { color: var(--paper); font-size: 12px; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 
     @media (max-width: 760px) {
-      .nav-inner { min-height: 74px; align-items: flex-start; padding: 12px 0; }
-      .wordmark { padding-top: 9px; }
-      .controls { flex-wrap: wrap; justify-content: flex-end; }
-      .switch button { padding: 7px 10px; font-size: 10px; }
-      .action { display: none; }
-      .hero-inner { grid-template-columns: 1fr; gap: 38px; padding-top: 76px; }
-      .contact { max-width: 100%; }
-      .proof-inner, .now-grid, .cap-grid, .details-grid { grid-template-columns: 1fr; }
-      .proof-item, .proof-item + .proof-item { padding: 30px 0; border-right: 0; border-bottom: 1px solid var(--line-dark); }
-      .section { padding: 76px 0; }
-      .section-head { grid-template-columns: 1fr; gap: 14px; }
-      .now-grid { gap: 48px; }
-      .history-row { grid-template-columns: 1fr; gap: 8px; }
-      .cap-grid { gap: 0; }
-      .details-grid { gap: 44px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .wrap { width: min(calc(100% - 32px), var(--max)); }
+      .masthead .wrap { grid-template-columns: 1fr; gap: 12px; }
+      .mast-links { gap: 16px; flex-wrap: wrap; }
+      .intro { grid-template-columns: 1fr; gap: 46px; padding: 56px 0 64px; }
+      .content { grid-template-columns: 1fr; gap: 70px; padding-top: 64px; }
+      .job { grid-template-columns: 1fr; gap: 7px; }
+      .side { border-left: 0; border-top: 1px solid var(--ink); padding: 28px 0 0; }
+      footer .wrap { align-items: flex-start; flex-direction: column; }
     }
 
     @media print {
       @page { size: A4; margin: 14mm; }
-      .nav, .skip-link { display: none !important; }
-      body, .hero, .proof, footer { background: white !important; color: #111a29 !important; }
-      .hero-inner, .proof-inner, .section, .footer-inner { width: 100%; }
-      .hero-inner { padding: 0 0 16mm; grid-template-columns: 1fr 55mm; }
-      h1 { font-size: 54pt; }
-      .statement { font-size: 24pt; margin-top: 15mm; }
-      .proof { border-top: 1px solid #999; }
-      .proof-item { color: #111a29; border-color: #bbb; padding-top: 8mm; padding-bottom: 8mm; }
-      .proof-desc, .subline, .contact a, .contact span { color: #465061 !important; }
-      .section { padding: 16mm 0; break-inside: avoid; }
-      .capabilities { background: white; }
-      footer { display: none; }
+      body { background: white; }
+      .masthead, footer, .mode-switch { display: none; }
+      .wrap { width: 100%; }
+      .intro { padding: 0 0 12mm; grid-template-columns: 1.7fr 1fr; gap: 12mm; }
+      h1 { font-size: 51pt; }
+      .role { font-size: 18pt; }
+      .summary { font-size: 16pt; }
+      .content { grid-template-columns: 1.9fr 1fr; gap: 11mm; padding: 12mm 0 0; }
+      section + section { margin-top: 10mm; }
+      .job { grid-template-columns: 28mm 1fr; gap: 5mm; padding: 4mm 0; break-inside: avoid; }
+      .job h3 { font-size: 11pt; }
+      .job-copy, .company, .side p, .side li { font-size: 8.5pt; }
+      .side { padding-left: 6mm; }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#content">Skip to content</a>
-  <nav class="nav" aria-label="CV controls">
-    <div class="nav-inner">
-      <div class="wordmark">Gerard Teo</div>
-      <div class="controls">
-        <div class="switch" aria-label="Choose CV version">
-          <button id="designer-tab" type="button" data-track="designer" aria-pressed="true">Senior Designer</button>
-          <button id="director-tab" type="button" data-track="director" aria-pressed="false">Art Director</button>
-        </div>
-        <button class="action" type="button" onclick="window.print()">Print / Save PDF</button>
-      </div>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Skip to CV</a>
 
-  <main id="content">
-    <header class="hero">
-      <div class="hero-inner">
-        <div>
-          <p class="eyebrow">Singapore / Curriculum Vitae</p>
-          <h1>Gerard<br>Teo</h1>
-          <p class="role-title" id="role-title"></p>
-          <p class="statement" id="statement"></p>
-          <p class="subline" id="subline"></p>
-        </div>
-        <address class="contact">
-          <span>Singapore</span>
-          <a href="tel:+6598782541">+65 9878 2541</a>
-          <a href="mailto:gerard.ben.teo@gmail.com">gerard.ben.teo@gmail.com</a>
-          <a href="https://gerardteo.myportfolio.com/work" target="_blank" rel="noopener">Portfolio ↗</a>
-          <a href="https://www.linkedin.com/in/gerard-teo-0b106429/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        </address>
-      </div>
-    </header>
-
-    <section class="proof" aria-label="Career proof points">
-      <div class="proof-inner" id="proof"></div>
-    </section>
-
-    <section class="section" aria-labelledby="now-title">
-      <div class="section-head"><h2 class="section-label" id="now-title">Now</h2><div class="rule"></div></div>
-      <div class="now-grid" id="now-grid"></div>
-    </section>
-
-    <section class="section history" aria-labelledby="selected-title">
-      <div class="section-head"><h2 class="section-label" id="selected-title">Selected experience</h2><div class="rule"></div></div>
-      <div id="selected-list"></div>
-    </section>
-
-    <section class="capabilities" aria-labelledby="cap-title">
-      <div class="section">
-        <div class="section-head"><h2 class="section-label" id="cap-title">Capabilities</h2><div class="rule"></div></div>
-        <div class="cap-grid" id="cap-grid"></div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="earlier-title">
-      <div class="section-head"><h2 class="section-label" id="earlier-title">Earlier career</h2><div class="rule"></div></div>
-      <div id="earlier-list"></div>
-    </section>
-
-    <section class="section" aria-label="Education tools and selected brands">
-      <div class="details-grid">
-        <div class="detail-block">
-          <h2>Education</h2>
-          <p><strong>NTU PaCE, 2026</strong><br>Advanced Professional Certificate in UX Design and Digital Product Management.</p>
-          <p>Academic projects: HealthHub caregiver and medical-translation flow; OCBC subscription-management sprint.</p>
-        </div>
-        <div class="detail-block">
-          <h2>Tools</h2>
-          <p><strong>Design</strong> Photoshop, Illustrator, InDesign, After Effects<br><strong>3D</strong> Blender, Cinema 4D, Spline<br><strong>Product</strong> Figma, Webflow<br><strong>AI</strong> ChatGPT, Firefly, Midjourney, Runway</p>
-        </div>
-        <div class="detail-block">
-          <h2>Selected brands</h2>
-          <p>Apple, L'Oreal, Unilever, Dow Chemical, Singtel, StarHub, BlackBerry, MTV Asia, EMI Music, UOB Travel and CEL Development.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-name">Gerard Teo</div>
-      <div class="footer-links">
+  <header class="masthead">
+    <div class="wrap">
+      <p class="edition">Gerard Teo / CV / Singapore / Updated July 2026</p>
+      <nav class="mast-links" aria-label="External links">
         <a href="mailto:gerard.ben.teo@gmail.com">Email</a>
         <a href="https://gerardteo.myportfolio.com/work" target="_blank" rel="noopener">Portfolio</a>
         <a href="https://www.linkedin.com/in/gerard-teo-0b106429/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <div class="intro">
+      <div>
+        <p class="kicker">Curriculum Vitae</p>
+        <h1>Gerard<br>Teo</h1>
+        <p class="role" id="role"></p>
+      </div>
+      <div class="intro-copy">
+        <p class="summary" id="summary"></p>
+        <div class="mode-switch" aria-label="Choose CV emphasis">
+          <button type="button" data-mode="designer" aria-pressed="true">Design role</button>
+          <button type="button" data-mode="director" aria-pressed="false">Leadership role</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div>
+        <section aria-labelledby="current-heading">
+          <h2 class="section-title" id="current-heading">Current work</h2>
+          <div id="current-jobs"></div>
+        </section>
+
+        <section aria-labelledby="experience-heading">
+          <h2 class="section-title" id="experience-heading">Selected experience</h2>
+          <div id="experience-jobs"></div>
+        </section>
+      </div>
+
+      <aside class="side" aria-label="Additional details">
+        <section>
+          <h2 class="side-title">Contact</h2>
+          <div class="contact-list">
+            <a href="tel:+6598782541">+65 9878 2541</a>
+            <a href="mailto:gerard.ben.teo@gmail.com">gerard.ben.teo@gmail.com</a>
+            <a href="https://gerardteo.myportfolio.com/work" target="_blank" rel="noopener">Portfolio ↗</a>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="side-title">What I work with</h2>
+          <ul class="plain-list" id="skills"></ul>
+        </section>
+
+        <section>
+          <h2 class="side-title">Tools</h2>
+          <p>Photoshop, Illustrator, InDesign, After Effects, Figma, Blender, Cinema 4D, Spline and Webflow.</p>
+          <p class="note">I also use ChatGPT, Firefly, Midjourney and Runway as part of concept development and production.</p>
+        </section>
+
+        <section>
+          <h2 class="side-title">Education</h2>
+          <p><strong>NTU PaCE, 2026</strong><br>Advanced Professional Certificate in UX Design &amp; Digital Product Management.</p>
+        </section>
+
+        <section>
+          <h2 class="side-title">Selected brands</h2>
+          <p>Apple, L'Oréal, Unilever, Dow Chemical, Singtel, StarHub, BlackBerry, MTV Asia, EMI Music and UOB Travel.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="footer-name">Gerard Teo</p>
+      <div class="footer-actions">
+        <a href="mailto:gerard.ben.teo@gmail.com">Get in touch</a>
+        <button class="print" type="button" onclick="window.print()">Print / save PDF</button>
       </div>
     </div>
   </footer>
 
   <script>
-    const sharedEarlier = [
-      { date: "May 2011 – Nov 2011", role: "Design Director", company: "Orbital Group Pte Ltd", scope: "Led pitch visuals and multi-channel design delivery for BlackBerry, Munich Automobiles and Pacific Healthcare." },
-      { date: "Sep 2013 – Nov 2014", role: "Senior Designer & 3D Visualisation Lead", company: "Crepuscule Asia", scope: "Led brand, packaging and 3D visualisation work for Unilever and L'Oreal." },
-      { date: "Sep 2020 – Apr 2024", role: "Freelance Designer", company: "Northstar Travel Media", scope: "Designed responsive campaigns and reusable systems with cross-functional teams." }
+    const commonCurrent = [
+      {
+        date: "Jan 2026 — Present",
+        role: "Graphic Designer",
+        company: "C2 Creative Communications Pte Ltd & C2 Global Exhibitions Pte Ltd, Singapore",
+        copy: "Design key visuals and campaign materials for exhibitions, conferences, corporate events and experiential projects."
+      },
+      {
+        date: "Jan 2014 — Present",
+        role: "Head of Art & Creative Operations",
+        company: "The Fat Oracle — Independent freelance practice, Singapore",
+        copy: "Work directly with clients on brand identity, packaging, campaigns and 3D visualisation, from the first conversation to final production."
+      }
     ];
 
     const tracks = {
       designer: {
-        title: "Senior Graphic & Creative Designer",
-        statement: "I turn complex briefs into clear, memorable brand and experience systems.",
-        subline: "Hands-on across design, events, packaging, 3D visualisation and emerging AI workflows.",
-        proof: [
-          ["20+", "Years", "Agency, in-house and independent practice"],
-          ["3 to 15", "Team growth", "Built a multidisciplinary design studio"],
-          ["End to end", "Range", "Brand strategy, design, 3D and production"]
+        role: "Senior Graphic & Creative Designer",
+        summary: "I’m a Singapore-based designer with a long background in brand, campaign and production work. I’m most useful when a brief is still messy — and when the final artwork has to work in the real world.",
+        skills: [
+          "Brand identity and visual systems",
+          "Campaign and event key visuals",
+          "Packaging, print and production",
+          "3D visualisation and mock-ups",
+          "Presentations and pitch decks",
+          "UX flows, wireframes and prototypes"
         ],
-        now: [
-          { date: "Jan 2026 – Present", role: "Graphic Designer", company: "C2 Creative Communications & C2 Global Exhibitions (C Square), Singapore", scope: "Create key visuals and integrated assets for exhibitions, conferences, corporate events and experiential programmes." },
-          { date: "Jan 2014 – Present", role: "Head of Art & Creative Operations", company: "The Fat Oracle, Singapore — Independent freelance practice", scope: "Deliver brand identity, packaging, campaign and 3D visualisation projects from brief through production." }
-        ],
-        selected: [
-          { date: "Sep 2021 – Nov 2022", role: "Content Designer — Apple Account", company: "Hogarth Worldwide, Singapore", scope: "Adapted and quality-controlled Apple retail and digital campaign assets under exacting global guidelines." },
-          { date: "Sep 2020 – Apr 2024", role: "Freelance Designer", company: "Northstar Travel Media, Singapore", scope: "Designed responsive email campaigns from mood boards and wireframes through final templates and assets." },
-          { date: "Sep 2013 – Nov 2014", role: "Senior Designer & 3D Visualisation Lead", company: "Crepuscule Asia, Singapore", scope: "Created brand, packaging, retail and campaign assets for Unilever and L'Oreal." }
-        ],
-        capabilities: [
-          ["Brand systems", "Identity, guidelines and visual language"],
-          ["Campaigns & events", "Key visuals, stage and environmental graphics"],
-          ["Packaging & print", "Concept, artwork, prepress and production"],
-          ["3D & AI", "Visualisation, mock-ups and concept exploration"],
-          ["Presentations", "Pitch narratives and stakeholder decks"],
-          ["UX & product", "Research, flows, wireframes and prototypes"]
-        ],
-        earlier: [
-          { date: "May 2011 – Nov 2011", role: "Design Director", company: "Orbital Group Pte Ltd", scope: "Led pitch visuals and multi-channel design delivery for BlackBerry, Munich Automobiles and Pacific Healthcare." },
-          { date: "Jan 2004 – Jul 2009", role: "Co-Founder / Creative Director", company: "Blacksheep Communications Pte Ltd", scope: "Co-founded and grew a studio from three to 15 designers, delivering identity, campaign, digital and experiential work." },
-          { date: "Jan 2001 – Jan 2009", role: "Creative Designer to Creative Director", company: "CP&GD Design Communications Pte Ltd", scope: "Progressed into creative leadership across integrated print, outdoor and digital campaigns." }
+        experience: [
+          {
+            date: "Sep 2021 — Nov 2022",
+            role: "Content Designer — Apple Account",
+            company: "Hogarth Worldwide, Singapore",
+            copy: "Adapted and checked Apple retail and digital campaign assets against detailed global brand and production standards."
+          },
+          {
+            date: "Sep 2020 — Apr 2024",
+            role: "Freelance Designer",
+            company: "Northstar Travel Media, Singapore",
+            copy: "Designed responsive email campaigns, taking approved concepts and wireframes through to final templates and production assets."
+          },
+          {
+            date: "Sep 2013 — Nov 2014",
+            role: "Senior Designer & 3D Visualisation Lead",
+            company: "Crepuscule Asia, Singapore",
+            copy: "Created brand, packaging, retail and presentation work for Unilever and L’Oréal, with 3D visualisation used to develop and sell ideas."
+          },
+          {
+            date: "May 2011 — Nov 2011",
+            role: "Design Director",
+            company: "Orbital Group Pte Ltd, Singapore",
+            copy: "Led pitch and campaign design for clients including BlackBerry, Munich Automobiles and Pacific Healthcare."
+          },
+          {
+            date: "Jan 2004 — Jul 2009",
+            role: "Co-Founder / Creative Director",
+            company: "Blacksheep Communications Pte Ltd, Singapore",
+            copy: "Co-founded the studio and helped grow the design team from three to 15 people across identity, campaign, digital and experiential work."
+          },
+          {
+            date: "Jan 2001 — Jan 2009",
+            role: "Creative Designer to Creative Director",
+            company: "CP&GD Design Communications Pte Ltd, Singapore",
+            copy: "Moved from hands-on design into creative direction across print, outdoor and digital campaigns."
+          }
         ]
       },
       director: {
-        title: "Art Director & Creative Lead",
-        statement: "I lead ideas from strategic intent to compelling, production-ready creative systems.",
-        subline: "Creative direction grounded in hands-on craft, team leadership and production judgement.",
-        proof: [
-          ["20+", "Years", "Brand and creative leadership"],
-          ["3 to 15", "Team growth", "Scaled a multidisciplinary agency"],
-          ["End to end", "Leadership", "Strategic direction through production"]
+        role: "Art Director & Creative Lead",
+        summary: "I’ve spent most of my career moving between making the work and leading it. I’m comfortable setting a direction, explaining it clearly, and staying close enough to production to make sure it lands properly.",
+        skills: [
+          "Creative direction and concept development",
+          "Brand thinking and visual direction",
+          "Campaigns, events and experiences",
+          "Pitches and stakeholder presentations",
+          "Team direction and mentoring",
+          "Production planning and delivery"
         ],
-        now: [
-          { date: "Jan 2026 – Present", role: "Graphic Designer", company: "C2 Creative Communications & C2 Global Exhibitions (C Square), Singapore", scope: "Shape creative directions and execute key visuals for exhibitions, conferences and experiential programmes." },
-          { date: "Jan 2014 – Present", role: "Head of Art & Creative Operations", company: "The Fat Oracle, Singapore — Independent freelance practice", scope: "Lead brand strategy, identity, packaging, campaign and 3D visualisation projects from discovery through production." }
-        ],
-        selected: [
-          { date: "Jan 2004 – Jul 2009", role: "Co-Founder / Creative Director", company: "Blacksheep Communications Pte Ltd", scope: "Co-founded and scaled the agency from three to 15 designers, building creative capability and long-term client relationships." },
-          { date: "Jan 2001 – Jan 2009", role: "Creative Designer to Creative Director", company: "CP&GD Design Communications Pte Ltd", scope: "Progressed from hands-on designer to creative leadership, setting direction for integrated campaign delivery." },
-          { date: "Sep 2021 – Nov 2022", role: "Content Designer — Apple Account", company: "Hogarth Worldwide, Singapore", scope: "Protected Apple's brand standards through rigorous review, adaptation and quality control." }
-        ],
-        capabilities: [
-          ["Creative direction", "Vision, concept systems and quality standards"],
-          ["Brand strategy", "Positioning translated into visual expression"],
-          ["Campaigns & experiences", "Integrated ideas across physical and digital"],
-          ["Pitches & presentations", "Persuasive narratives and executive alignment"],
-          ["Team leadership", "Direction, mentoring and capability building"],
-          ["Production leadership", "Budgets, vendors, resources and delivery"]
-        ],
-        earlier: sharedEarlier
+        experience: [
+          {
+            date: "Jan 2004 — Jul 2009",
+            role: "Co-Founder / Creative Director",
+            company: "Blacksheep Communications Pte Ltd, Singapore",
+            copy: "Co-founded the studio, grew the design team from three to 15 people and stayed involved in both the work and the client relationships."
+          },
+          {
+            date: "Jan 2001 — Jan 2009",
+            role: "Creative Designer to Creative Director",
+            company: "CP&GD Design Communications Pte Ltd, Singapore",
+            copy: "Progressed from designer to creative lead, setting direction for integrated print, outdoor and digital campaign work."
+          },
+          {
+            date: "May 2011 — Nov 2011",
+            role: "Design Director",
+            company: "Orbital Group Pte Ltd, Singapore",
+            copy: "Directed pitch and campaign work for BlackBerry, Munich Automobiles and Pacific Healthcare."
+          },
+          {
+            date: "Sep 2013 — Nov 2014",
+            role: "Senior Designer & 3D Visualisation Lead",
+            company: "Crepuscule Asia, Singapore",
+            copy: "Combined design direction with hands-on brand, packaging and 3D visualisation work for Unilever and L’Oréal."
+          },
+          {
+            date: "Sep 2021 — Nov 2022",
+            role: "Content Designer — Apple Account",
+            company: "Hogarth Worldwide, Singapore",
+            copy: "Worked within Apple’s global system, reviewing and adapting campaign assets with close attention to brand and production detail."
+          },
+          {
+            date: "Sep 2020 — Apr 2024",
+            role: "Freelance Designer",
+            company: "Northstar Travel Media, Singapore",
+            copy: "Worked with cross-functional teams to turn concepts and wireframes into responsive email campaigns."
+          }
+        ]
       }
     };
 
-    const $ = (selector) => document.querySelector(selector);
-    const escapeHTML = (value) => value.replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+    const escapeHTML = function(value) {
+      return value.replace(/[&<>'"]/g, function(character) {
+        return {"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[character];
+      });
+    };
 
-    function positionHTML(item) {
-      return `<article class="position"><h3>${escapeHTML(item.role)}</h3><p class="position-meta">${escapeHTML(item.company)}<br><span class="position-date">${escapeHTML(item.date)}</span></p><p class="position-scope">${escapeHTML(item.scope)}</p></article>`;
-    }
-    function historyHTML(item) {
-      return `<article class="history-row"><div class="history-date">${escapeHTML(item.date)}</div><div><h3 class="history-role">${escapeHTML(item.role)}</h3><p class="history-meta">${escapeHTML(item.company)}</p><p class="history-scope">${escapeHTML(item.scope)}</p></div></article>`;
-    }
+    const jobHTML = function(job) {
+      return '<article class="job">' +
+        '<div class="job-date">' + escapeHTML(job.date) + '</div>' +
+        '<div><h3>' + escapeHTML(job.role) + '</h3>' +
+        '<p class="company">' + escapeHTML(job.company) + '</p>' +
+        '<p class="job-copy">' + escapeHTML(job.copy) + '</p></div>' +
+        '</article>';
+    };
 
-    function render(trackName, updateHash = true) {
-      const data = tracks[trackName];
-      document.body.classList.remove("fade");
-      void document.body.offsetWidth;
-      document.body.classList.add("fade");
-      $("#role-title").textContent = data.title;
-      $("#statement").textContent = data.statement;
-      $("#subline").textContent = data.subline;
-      $("#proof").innerHTML = data.proof.map(([value,label,desc]) => `<div class="proof-item"><span class="proof-value">${escapeHTML(value)}</span><span class="proof-label">${escapeHTML(label)}</span><span class="proof-desc">${escapeHTML(desc)}</span></div>`).join("");
-      $("#now-grid").innerHTML = data.now.map(positionHTML).join("");
-      $("#selected-list").innerHTML = data.selected.map(historyHTML).join("");
-      $("#cap-grid").innerHTML = data.capabilities.map(([title,desc], i) => `<article class="cap-item"><span class="cap-index">0${i+1}</span><h3>${escapeHTML(title)}</h3><p>${escapeHTML(desc)}</p></article>`).join("");
-      $("#earlier-list").innerHTML = data.earlier.map(historyHTML).join("");
-      document.title = `Gerard Teo — ${data.title}, Singapore`;
-      document.querySelectorAll("[data-track]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.track === trackName)));
-      if (updateHash) history.replaceState(null, "", `#${trackName}`);
-    }
+    const render = function(mode, updateHash) {
+      const data = tracks[mode];
+      document.getElementById('role').textContent = data.role;
+      document.getElementById('summary').textContent = data.summary;
+      document.getElementById('current-jobs').innerHTML = commonCurrent.map(jobHTML).join('');
+      document.getElementById('experience-jobs').innerHTML = data.experience.map(jobHTML).join('');
+      document.getElementById('skills').innerHTML = data.skills.map(function(skill) {
+        return '<li>' + escapeHTML(skill) + '</li>';
+      }).join('');
+      document.querySelectorAll('[data-mode]').forEach(function(button) {
+        button.setAttribute('aria-pressed', String(button.dataset.mode === mode));
+      });
+      document.title = 'Gerard Teo — ' + data.role + ', Singapore';
+      if (updateHash) history.replaceState(null, '', '#' + mode);
+    };
 
-    document.querySelectorAll("[data-track]").forEach(button => button.addEventListener("click", () => render(button.dataset.track)));
-    const initial = location.hash === "#director" ? "director" : "designer";
-    render(initial, false);
+    document.querySelectorAll('[data-mode]').forEach(function(button) {
+      button.addEventListener('click', function() { render(button.dataset.mode, true); });
+    });
+
+    render(location.hash === '#director' ? 'director' : 'designer', false);
   </script>
 </body>
 </html>
