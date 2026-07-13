@@ -94,7 +94,7 @@
       margin: 0;
       width: min(100%, 220px);
       justify-self: end;
-      align-self: stretch;
+      align-self: start;
       position: relative;
       min-height: 0;
     }
@@ -455,6 +455,21 @@
         '</article>';
     };
 
+    const syncPortraitHeight = function() {
+      const portrait = document.querySelector('.portrait');
+      if (!portrait) return;
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        portrait.style.removeProperty('height');
+        return;
+      }
+      const identity = document.querySelector('.intro > div:first-child');
+      const introduction = document.querySelector('.intro-copy');
+      if (!identity || !introduction) return;
+      const top = identity.getBoundingClientRect().top;
+      const bottom = introduction.getBoundingClientRect().bottom;
+      portrait.style.height = Math.ceil(bottom - top) + 'px';
+    };
+
     const render = function(mode, updateHash) {
       const data = tracks[mode];
       document.getElementById('role').textContent = data.role;
@@ -469,6 +484,7 @@
       });
       document.title = 'Gerard Teo — ' + data.role + ', Singapore';
       if (updateHash) history.replaceState(null, '', '#' + mode);
+      requestAnimationFrame(syncPortraitHeight);
     };
 
     document.querySelectorAll('[data-mode]').forEach(function(button) {
@@ -476,6 +492,10 @@
     });
 
     render(location.hash === '#director' ? 'director' : 'designer', false);
+    window.addEventListener('resize', syncPortraitHeight, { passive: true });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncPortraitHeight);
+    }
   </script>
 </body>
 </html>
