@@ -8,6 +8,9 @@
   <meta name="author" content="Gerard Teo">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://doesdesignwork.github.io/gerard-teo-cv/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Gerard Teo — Designer & Creative Lead">
   <meta property="og:description" content="Branding, campaigns, events, packaging, 3D visualisation and creative direction.">
@@ -33,8 +36,8 @@
       --muted: #66655f;
       --line: #c8c6be;
       --red: #c63d2f;
-      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Poppins", sans-serif;
+      --serif: "Poppins", sans-serif;
       --max: 1160px;
     }
 
@@ -45,6 +48,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--sans);
+      font-weight: 300;
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-underline-offset: 3px; }
@@ -73,19 +77,20 @@
       padding: 74px 0 88px;
       border-bottom: 1px solid var(--ink);
     }
-    .kicker { margin: 0 0 18px; color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .kicker { margin: 0 0 18px; color: var(--red); font-size: 12px; font-weight: 400; letter-spacing: .09em; text-transform: uppercase; }
     h1 {
       margin: 0;
       font-size: clamp(58px, 9vw, 112px);
       line-height: .88;
       letter-spacing: -.065em;
-      font-weight: 700;
+      font-weight: 400;
     }
     .role { margin: 25px 0 0; font-size: clamp(20px, 2.5vw, 31px); letter-spacing: -.03em; }
     .intro-copy { align-self: end; }
     .summary {
       margin: 0;
       font-family: var(--serif);
+      font-weight: 300;
       font-size: clamp(23px, 2.5vw, 32px);
       line-height: 1.25;
       letter-spacing: -.018em;
@@ -116,7 +121,7 @@
       padding-bottom: 12px;
       border-bottom: 1px solid var(--ink);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 400;
       letter-spacing: .09em;
       text-transform: uppercase;
     }
@@ -127,14 +132,14 @@
       padding: 24px 0 28px;
       border-bottom: 1px solid var(--line);
     }
-    .job-date { color: var(--red); font-size: 12px; font-weight: 700; line-height: 1.4; }
-    .job h3 { margin: 0; font-size: 19px; line-height: 1.2; letter-spacing: -.018em; }
+    .job-date { color: var(--red); font-size: 12px; font-weight: 400; line-height: 1.4; }
+    .job h3 { margin: 0; font-size: 19px; font-weight: 400; line-height: 1.2; letter-spacing: -.018em; }
     .company { margin: 5px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
     .job-copy { margin: 10px 0 0; max-width: 610px; font-size: 15px; line-height: 1.55; }
 
     .side { border-left: 1px solid var(--ink); padding-left: 28px; }
     .side section + section { margin-top: 56px; }
-    .side-title { margin: 0 0 18px; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .side-title { margin: 0 0 18px; color: var(--red); font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; }
     .side p, .side li { font-size: 14px; line-height: 1.55; }
     .side p { margin: 0; }
     .side p + p { margin-top: 17px; }
@@ -146,7 +151,8 @@
 
     footer { background: var(--ink); color: var(--paper); padding: 28px 0; }
     footer .wrap { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
-    .footer-name { margin: 0; font-weight: 700; }
+    .side strong, .footer-name { font-weight: 400; }
+    .footer-name { margin: 0; }
     .footer-actions { display: flex; gap: 18px; align-items: center; }
     .footer-actions a, .print { color: var(--paper); font-size: 12px; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 
