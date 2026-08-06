@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#111827" name="theme-color"/>
+<meta content="A free interactive Taipei itinerary map for 20–24 August 2027, with live location tracking, nearby places and transparent trip costs." name="description"/>
+<title>Taipei 2027 · Couple Trip Companion</title>
+<link href="https://tile.openstreetmap.org" rel="preconnect"/>
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3aJcQmJ8jMZc6wP0I7YvZ1s0g7xPI=" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell" data-theme="light" id="app">
+<header class="topbar">
+<div class="brand">
+<div aria-hidden="true" class="brand-mark">台</div>
+<div>
+<h1>Taipei 2027</h1>
+<p>20–24 Aug · Roaders Plus Taipei Station · Couple itinerary</p>
+</div>
+</div>
+<div class="top-actions">
+<button aria-label="Fit route to map" class="icon-btn" id="fitRouteBtn" title="Fit route to map" type="button">⌖</button>
+<button aria-label="Switch colour theme" class="icon-btn" id="themeBtn" title="Switch theme" type="button">☾</button>
+</div>
+</header>
+<main class="workspace">
+<section aria-label="Interactive Taipei itinerary map" class="map-pane">
+<div aria-label="Map showing the Taipei journey" id="map" role="application"></div>
+<div class="map-controls">
+<div aria-label="Map day filter" class="day-picker" id="mapDayPicker"></div>
+<div class="locate-stack">
+<button aria-label="Start live location tracking" class="map-fab" id="locateBtn" title="Track my location" type="button">◎</button>
+<button aria-label="Toggle follow mode" class="map-fab" disabled="" id="followBtn" title="Follow my location" type="button">↗</button>
+</div>
+</div>
+<div class="map-status">
+<div aria-live="polite" class="status-card">
+<strong id="locationHeadline">Location tracking is off</strong>
+<span id="locationDetail">Tap ◎ to use your device location. It stays in this browser and is not stored by this site.</span>
+</div>
+</div>
+</section>
+<aside class="side-pane">
+<nav aria-label="Trip tools" class="tabs">
+<button class="tab-btn active" data-tab="itinerary" type="button">Itinerary</button>
+<button class="tab-btn" data-tab="nearby" type="button">Around me</button>
+<button class="tab-btn" data-tab="costs" type="button">Costs</button>
+<button class="tab-btn" data-tab="apps" type="button">Apps</button>
+</nav>
+<section class="tab-panel active" id="tab-itinerary">
+<div class="section-head">
+<div>
+<h2 id="itineraryTitle">Day 1</h2>
+<p id="itinerarySubtitle"></p>
+</div>
+</div>
+<div class="trip-summary" id="tripSummary"></div>
+<div class="timeline" id="timeline"></div>
+</section>
+<section class="tab-panel" id="tab-nearby">
+<div class="section-head">
+<div>
+<h2>Around me</h2>
+<p>Free nearby discovery from OpenStreetMap.</p>
+</div>
+</div>
+<div class="notice">
+            Use your live location or tap anywhere on the map to choose an exploration point. Results may be incomplete because they come from community-maintained map data.
+          </div>
+<div class="poi-filters">
+<div class="field-row">
+<label class="field">Search from
+                <select id="originSelect">
+<option value="current">Current location</option>
+<option value="map">Selected map point</option>
+<option value="hotel">Roaders Plus Hotel</option>
+</select>
+</label>
+<label class="field">Radius
+                <select id="radiusSelect">
+<option value="300">300 m</option>
+<option selected="" value="500">500 m</option>
+<option value="1000">1 km</option>
+</select>
+</label>
+</div>
+<div class="category-row" id="categoryRow">
+<button class="chip active" data-category="food" type="button">Food &amp; drink</button>
+<button class="chip" data-category="shopping" type="button">Shopping</button>
+<button class="chip" data-category="sights" type="button">Places of interest</button>
+</div>
+<button class="btn primary" id="searchNearbyBtn" type="button">Find places nearby</button>
+</div>
+<div aria-live="polite" class="small-note" id="nearbyStatus"></div>
+<div class="poi-grid" id="poiGrid"></div>
+</section>
+<section class="tab-panel" id="tab-costs">
+<div class="section-head">
+<div>
+<h2>Hidden cost audit</h2>
+<p>Editable planning range for two people.</p>
+</div>
+</div>
+<div class="field-row" style="margin-bottom:14px">
+<label class="field">SGD 1 equals TWD
+              <input id="fxRate" min="1" step="0.1" type="number" value="24.5"/>
+</label>
+<label class="field">Shopping budget TWD
+              <input id="shoppingBudget" min="0" step="500" type="number" value="0"/>
+</label>
+</div>
+<div class="cost-list" id="costList"></div>
+<div class="cost-total">
+<span>Estimated local spend for two</span>
+<strong id="costTwd">TWD 0–0</strong>
+<span id="costSgd">SGD 0–0</span>
+</div>
+<div class="audit-list" id="auditList"></div>
+</section>
+<section class="tab-panel" id="tab-apps">
+<div class="section-head">
+<div>
+<h2>Smart local apps</h2>
+<p>Free tools and official travel checks.</p>
+</div>
+</div>
+<div class="app-list" id="appList"></div>
+<div class="privacy">
+<strong>Privacy:</strong> this site has no account, analytics, ad tracker or server database. Visited stops, theme and budget values are saved only in your browser. Live location is used only after you press the location button.
+          </div>
+</section>
+</aside>
+</main>
+</div>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
