@@ -1,0 +1,3 @@
+.app-shell{background:var(--bg);color:var(--ink)}
+.section-head h2,.stop-title,.brand h1{color:var(--ink)}
+.leaflet-container{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
