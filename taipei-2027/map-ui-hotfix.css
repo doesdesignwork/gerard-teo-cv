@@ -1,21 +1,24 @@
-/* Map UI hotfix: prevent map controls collisions and enforce readable overlays */
+/* Map UI hotfix: mobile alignment, visibility and control spacing */
 
-/* Leaflet's native zoom control shares the top-left corner with our day picker.
-   Push it beneath the selector at all split-pane widths, not just narrow viewports. */
+/* Native Leaflet zoom controls sit below the route/day selector. */
 .map-pane .leaflet-top.leaflet-left{
   top:88px!important;
   left:6px!important;
 }
 .map-pane .leaflet-control-zoom{
-  margin-top:0!important;
-  margin-left:0!important;
+  margin:0!important;
   position:relative;
   z-index:760!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
 }
 .map-pane .leaflet-control-zoom a{
+  width:46px!important;
+  height:46px!important;
+  line-height:46px!important;
   background:#17211f!important;
   color:#fff!important;
-  border-color:rgba(255,255,255,.2)!important;
+  border-color:rgba(255,255,255,.18)!important;
   text-shadow:none!important;
 }
 .map-pane .leaflet-control-zoom a:hover,
@@ -24,26 +27,47 @@
   color:#fff!important;
 }
 
-/* Make the bottom helper overlays explicitly dark. This avoids inherited/light
-   surface colours producing white-on-cream text in some browser/theme states. */
-.map-legend{
-  background:rgba(23,33,31,.94)!important;
+/* Explicit map action styling so locate/follow controls never disappear into the map. */
+.map-pane .map-fab{
+  width:46px!important;
+  height:46px!important;
+  background:#17211f!important;
   color:#fff!important;
-  border-color:rgba(255,255,255,.26)!important;
-  box-shadow:0 10px 28px rgba(0,0,0,.24)!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.28)!important;
+  opacity:1!important;
+}
+.map-pane .map-fab:hover,
+.map-pane .map-fab:focus{
+  background:#25332f!important;
+  color:#fff!important;
+}
+.map-pane .map-fab.active{
+  background:#087f72!important;
+  border-color:#38b9a8!important;
+}
+.map-pane .map-fab:disabled{
+  opacity:.55!important;
+}
+
+/* Readable bottom overlays. */
+.map-legend{
+  background:rgba(23,33,31,.96)!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.26)!important;
   text-shadow:none!important;
 }
 .map-legend span{
   color:#fff!important;
   opacity:1!important;
 }
-
 .status-card{
   position:relative!important;
-  background:rgba(23,33,31,.96)!important;
+  background:rgba(23,33,31,.97)!important;
   color:#fff!important;
-  border-color:rgba(255,255,255,.26)!important;
-  box-shadow:0 12px 32px rgba(0,0,0,.28)!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 12px 32px rgba(0,0,0,.3)!important;
   text-shadow:none!important;
 }
 .status-card strong,
@@ -54,50 +78,127 @@
 }
 .status-card span,
 #locationDetail{
-  color:rgba(255,255,255,.86)!important;
+  color:rgba(255,255,255,.9)!important;
   opacity:1!important;
 }
-.status-card::before{
-  background:#38b9a8!important;
-}
+.status-card::before{background:#38b9a8!important;}
 
-/* Keep overlays compact so they remain useful without swallowing the map. */
-.map-legend{
-  max-width:min(360px,calc(100% - 36px))!important;
-}
-.status-card{
-  max-width:min(620px,calc(100% - 4px))!important;
-}
+/* Desktop/split layout keeps overlays tidy. */
+.map-legend{max-width:min(360px,calc(100% - 36px))!important;}
+.status-card{max-width:min(620px,calc(100% - 4px))!important;}
 
-/* At truly small screens, the day picker becomes a horizontal scroller and the
-   zoom control sits safely below it. */
-@media(max-width:620px){
-  .map-pane .leaflet-top.leaflet-left{
-    top:78px!important;
-    left:6px!important;
+/* Tablet and phone map layout. This breakpoint matches when the app stacks vertically. */
+@media(max-width:920px){
+  .map-controls{
+    top:16px!important;
+    left:16px!important;
+    right:16px!important;
+    display:block!important;
   }
+
+  /* Route selector gets its own uninterrupted row. */
+  .day-picker{
+    width:max-content!important;
+    max-width:100%!important;
+    min-height:64px!important;
+    margin:0!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    flex-wrap:nowrap!important;
+    scrollbar-width:none!important;
+  }
+  .day-picker::-webkit-scrollbar{display:none!important;}
+
+  /* Zoom and location controls form a clean second row below the selector. */
+  .map-pane .leaflet-top.leaflet-left{
+    top:96px!important;
+    left:16px!important;
+  }
+  .locate-stack{
+    position:absolute!important;
+    top:80px!important;
+    right:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:8px!important;
+    z-index:780!important;
+  }
+
+  /* Bottom cards share the same left/right grid and stay above each other. */
   .map-legend{
-    left:10px!important;
-    bottom:91px!important;
-    max-width:calc(100% - 20px)!important;
-    padding:8px 10px!important;
+    left:16px!important;
+    right:16px!important;
+    bottom:104px!important;
+    width:auto!important;
+    max-width:none!important;
+    min-height:42px!important;
+    padding:10px 14px!important;
+    border-radius:14px!important;
+    font-size:12px!important;
+    line-height:1.35!important;
+  }
+  .map-status{
+    left:16px!important;
+    right:16px!important;
+    bottom:16px!important;
+  }
+  .status-card{
+    width:100%!important;
+    max-width:none!important;
+    min-height:76px!important;
+    padding:12px 16px 12px 20px!important;
+    border-radius:17px!important;
+  }
+  .status-card strong{font-size:15px!important;line-height:1.25!important;}
+  .status-card span{font-size:12px!important;line-height:1.45!important;}
+}
+
+/* Narrow phones: slightly tighter controls, same alignment. */
+@media(max-width:560px){
+  .map-controls{top:12px!important;left:12px!important;right:12px!important;}
+  .day-picker{min-height:58px!important;max-width:100%!important;}
+  .day-picker .seg-btn{min-height:46px!important;}
+
+  .map-pane .leaflet-top.leaflet-left{
+    top:84px!important;
+    left:12px!important;
+  }
+  .locate-stack{
+    top:72px!important;
+    right:0!important;
+  }
+
+  .map-pane .leaflet-control-zoom a,
+  .map-pane .map-fab{
+    width:44px!important;
+    height:44px!important;
+    line-height:44px!important;
+  }
+
+  .map-legend{
+    left:12px!important;
+    right:12px!important;
+    bottom:100px!important;
+    min-height:40px!important;
+    padding:9px 12px!important;
     font-size:11px!important;
   }
   .map-status{
-    left:10px!important;
-    right:10px!important;
-    bottom:10px!important;
+    left:12px!important;
+    right:12px!important;
+    bottom:12px!important;
   }
   .status-card{
-    min-height:68px!important;
-    padding:11px 13px 11px 16px!important;
+    min-height:72px!important;
+    padding:11px 14px 11px 18px!important;
   }
   .status-card strong{font-size:14px!important;}
-  .status-card span{font-size:11px!important;line-height:1.4!important;}
+  .status-card span{font-size:11px!important;}
 }
 
 [data-theme="dark"] .map-pane .leaflet-control-zoom a,
+[data-theme="dark"] .map-pane .map-fab,
 [data-theme="dark"] .map-legend,
 [data-theme="dark"] .status-card{
-  background:rgba(11,17,15,.96)!important;
+  background:rgba(11,17,15,.97)!important;
 }
