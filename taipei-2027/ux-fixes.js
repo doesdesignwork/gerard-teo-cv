@@ -48,4 +48,12 @@
     new MutationObserver(enhance).observe(picker,{childList:true,subtree:true});
     enhance();
   }
+
+  /* Load the resilient Around Me pin enhancer once. It works with both the
+     legacy and recommendation result renderers, so every result gets a map pin. */
+  if(!document.querySelector('script[src="nearby-pin.js"]')){
+    const script=document.createElement('script');
+    script.src='nearby-pin.js';
+    document.body.appendChild(script);
+  }
 })();
