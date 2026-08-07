@@ -1,15 +1,13 @@
-/* Map UI hotfix: consistent spacing, alignment and edge rhythm */
-
-/* One spacing system for every map overlay. */
+/* Map UI final spacing pass: one visible spacing system across all map controls */
 .map-pane{
-  --map-edge:18px;
-  --map-gap:16px;
+  --map-edge:24px;
+  --map-gap:14px;
   --map-control-size:46px;
 }
 
-/* Native Leaflet zoom controls sit below the route/day selector. */
+/* Zoom controls */
 .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
-  top:88px!important;
+  top:92px!important;
   left:var(--map-edge)!important;
 }
 .map-pane .leaflet-left .leaflet-control,
@@ -36,7 +34,7 @@
   color:#fff!important;
 }
 
-/* Explicit map action styling so locate/follow controls never disappear into the map. */
+/* Location controls */
 .map-pane .map-fab{
   width:var(--map-control-size)!important;
   height:var(--map-control-size)!important;
@@ -57,7 +55,7 @@
 }
 .map-pane .map-fab:disabled{opacity:.55!important;}
 
-/* Readable bottom overlays. */
+/* Bottom helper + status cards */
 .map-legend{
   background:rgba(23,33,31,.96)!important;
   color:#fff!important;
@@ -80,7 +78,7 @@
 #locationDetail{color:rgba(255,255,255,.9)!important;opacity:1!important;}
 .status-card::before{background:#38b9a8!important;}
 
-/* Desktop/split layout keeps overlays tidy and on the same edge grid. */
+/* Desktop */
 .map-legend{
   left:var(--map-edge)!important;
   max-width:min(360px,calc(100% - (var(--map-edge) * 2)))!important;
@@ -88,11 +86,11 @@
 .map-status{
   left:var(--map-edge)!important;
   right:var(--map-edge)!important;
-  bottom:var(--map-edge)!important;
+  bottom:calc(var(--map-edge) + env(safe-area-inset-bottom,0px))!important;
 }
 .status-card{max-width:min(620px,calc(100% - 4px))!important;}
 
-/* Tablet and phone map layout. */
+/* Tablet + phone: same edge and gap values everywhere */
 @media(max-width:920px){
   .map-controls{
     top:var(--map-edge)!important;
@@ -101,11 +99,10 @@
     display:block!important;
   }
 
-  /* Route selector gets its own uninterrupted row. */
   .day-picker{
     width:max-content!important;
     max-width:100%!important;
-    min-height:64px!important;
+    min-height:58px!important;
     margin:0!important;
     overflow-x:auto!important;
     overflow-y:hidden!important;
@@ -113,16 +110,18 @@
     scrollbar-width:none!important;
   }
   .day-picker::-webkit-scrollbar{display:none!important;}
+  .day-picker .seg-btn{min-height:46px!important;}
 
-  /* Exactly 16px below the 64px selector: 18 + 64 + 16 = 98px. */
+  /* 24 edge + 58 selector + 14 gap = 96px */
   .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
-    top:98px!important;
+    top:96px!important;
     left:var(--map-edge)!important;
   }
   .map-pane .leaflet-left .leaflet-control{margin-left:0!important;}
+
   .locate-stack{
     position:absolute!important;
-    top:80px!important;
+    top:72px!important; /* 24px map-controls top + 72 = 96px absolute */
     right:0!important;
     display:flex!important;
     flex-direction:column!important;
@@ -130,84 +129,53 @@
     z-index:780!important;
   }
 
-  /* Bottom cards: same 18px edge inset and exactly 16px vertical gap. */
   .map-status{
     left:var(--map-edge)!important;
     right:var(--map-edge)!important;
-    bottom:var(--map-edge)!important;
+    bottom:calc(var(--map-edge) + env(safe-area-inset-bottom,0px))!important;
   }
   .status-card{
     width:100%!important;
     max-width:none!important;
-    min-height:76px!important;
-    padding:12px 16px 12px 20px!important;
+    min-height:72px!important;
+    padding:11px 16px 11px 20px!important;
     border-radius:17px!important;
     box-sizing:border-box!important;
   }
   .status-card strong{font-size:15px!important;line-height:1.25!important;}
   .status-card span{font-size:12px!important;line-height:1.45!important;}
 
+  /* 24px bottom + 72px status + 14px gap = 110px */
   .map-legend{
     left:var(--map-edge)!important;
-    right:var(--map-edge)!important;
-    bottom:110px!important; /* 18 bottom + 76 status + 16 gap */
-    width:auto!important;
-    max-width:none!important;
-    min-height:42px!important;
-    padding:10px 14px!important;
+    right:auto!important;
+    bottom:calc(110px + env(safe-area-inset-bottom,0px))!important;
+    width:max-content!important;
+    max-width:calc(100% - (var(--map-edge) * 2))!important;
+    min-height:40px!important;
+    padding:9px 13px!important;
     border-radius:14px!important;
-    font-size:12px!important;
+    font-size:11px!important;
     line-height:1.35!important;
     box-sizing:border-box!important;
   }
 }
 
-/* Narrow phones: same spacing system, slightly smaller controls only. */
 @media(max-width:560px){
   .map-pane{--map-control-size:44px;}
-
   .map-controls{
-    top:12px!important;
+    top:var(--map-edge)!important;
     left:var(--map-edge)!important;
     right:var(--map-edge)!important;
   }
-  .day-picker{
-    min-height:58px!important;
-    max-width:100%!important;
-  }
-  .day-picker .seg-btn{min-height:46px!important;}
-
-  /* 12 + 58 + 16 = 86px, matching the selector edge and rhythm. */
   .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
-    top:86px!important;
+    top:96px!important;
     left:var(--map-edge)!important;
   }
-  .map-pane .leaflet-left .leaflet-control{margin-left:0!important;}
   .locate-stack{
-    top:74px!important; /* relative to map-controls at 12px => absolute 86px */
+    top:72px!important;
     right:0!important;
     gap:var(--map-gap)!important;
-  }
-
-  .map-status{
-    left:var(--map-edge)!important;
-    right:var(--map-edge)!important;
-    bottom:var(--map-edge)!important;
-  }
-  .status-card{
-    min-height:72px!important;
-    padding:11px 14px 11px 18px!important;
-  }
-  .status-card strong{font-size:14px!important;}
-  .status-card span{font-size:11px!important;}
-
-  .map-legend{
-    left:var(--map-edge)!important;
-    right:var(--map-edge)!important;
-    bottom:106px!important; /* 18 bottom + 72 status + 16 gap */
-    min-height:40px!important;
-    padding:9px 12px!important;
-    font-size:11px!important;
   }
 }
 
