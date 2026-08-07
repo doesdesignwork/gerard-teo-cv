@@ -1,12 +1,14 @@
 /* Map UI hotfix: mobile alignment, visibility and control spacing */
 
 /* Native Leaflet zoom controls sit below the route/day selector. */
-.map-pane .leaflet-top.leaflet-left{
+.map-pane .leaflet-control-container .leaflet-top.leaflet-left{
   top:88px!important;
-  left:6px!important;
+  left:18px!important;
 }
+.map-pane .leaflet-left .leaflet-control,
 .map-pane .leaflet-control-zoom{
   margin:0!important;
+  margin-left:0!important;
   position:relative;
   z-index:760!important;
   border-radius:14px!important;
@@ -91,8 +93,8 @@
 @media(max-width:920px){
   .map-controls{
     top:16px!important;
-    left:16px!important;
-    right:16px!important;
+    left:18px!important;
+    right:18px!important;
     display:block!important;
   }
 
@@ -110,10 +112,11 @@
   .day-picker::-webkit-scrollbar{display:none!important;}
 
   /* Zoom and location controls form a clean second row below the selector. */
-  .map-pane .leaflet-top.leaflet-left{
+  .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
     top:96px!important;
-    left:16px!important;
+    left:18px!important;
   }
+  .map-pane .leaflet-left .leaflet-control{margin-left:0!important;}
   .locate-stack{
     position:absolute!important;
     top:80px!important;
@@ -126,8 +129,8 @@
 
   /* Bottom cards share the same left/right grid and stay above each other. */
   .map-legend{
-    left:16px!important;
-    right:16px!important;
+    left:18px!important;
+    right:18px!important;
     bottom:104px!important;
     width:auto!important;
     max-width:none!important;
@@ -138,9 +141,9 @@
     line-height:1.35!important;
   }
   .map-status{
-    left:16px!important;
-    right:16px!important;
-    bottom:16px!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
   }
   .status-card{
     width:100%!important;
@@ -153,16 +156,17 @@
   .status-card span{font-size:12px!important;line-height:1.45!important;}
 }
 
-/* Narrow phones: slightly tighter controls, same alignment. */
+/* Narrow phones: preserve the same 18px left alignment across selector, zoom and dialogs. */
 @media(max-width:560px){
-  .map-controls{top:12px!important;left:12px!important;right:12px!important;}
+  .map-controls{top:12px!important;left:18px!important;right:18px!important;}
   .day-picker{min-height:58px!important;max-width:100%!important;}
   .day-picker .seg-btn{min-height:46px!important;}
 
-  .map-pane .leaflet-top.leaflet-left{
+  .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
     top:84px!important;
-    left:12px!important;
+    left:18px!important;
   }
+  .map-pane .leaflet-left .leaflet-control{margin-left:0!important;}
   .locate-stack{
     top:72px!important;
     right:0!important;
@@ -176,17 +180,17 @@
   }
 
   .map-legend{
-    left:12px!important;
-    right:12px!important;
+    left:18px!important;
+    right:18px!important;
     bottom:100px!important;
     min-height:40px!important;
     padding:9px 12px!important;
     font-size:11px!important;
   }
   .map-status{
-    left:12px!important;
-    right:12px!important;
-    bottom:12px!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
   }
   .status-card{
     min-height:72px!important;
