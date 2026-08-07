@@ -6,12 +6,13 @@
   --ui-bg:#070A12!important;--ui-panel:#0D1220!important;--ui-surface:#101623!important;--ui-surface-muted:#182136!important;
   --ui-ink:#F7FAFF!important;--ui-muted:#B9C5D8!important;--ui-line:rgba(0,255,209,.22)!important;--ui-line-strong:rgba(217,0,255,.38)!important;
   --ui-accent:#FF6700!important;--ui-accent-strong:#FF6700!important;--ui-accent-soft:rgba(255,103,0,.15)!important;
+  --control-radius:6px!important;--content-radius:8px!important;--ui-radius:8px!important;
 }
 html,body,#app,.app-shell{background:#070A12!important;}
 body{background:radial-gradient(circle at 8% 6%,rgba(255,103,0,.20),transparent 28rem),radial-gradient(circle at 92% 12%,rgba(0,255,209,.16),transparent 30rem),radial-gradient(circle at 74% 82%,rgba(217,0,255,.12),transparent 32rem),#070A12!important;}
 .topbar{background:rgba(7,10,18,.92)!important;border-bottom-color:rgba(0,255,209,.25)!important;box-shadow:0 0 26px rgba(0,255,209,.08)!important;}
 .side-pane{background:linear-gradient(180deg,#0D1220,#090D17)!important;border-color:rgba(0,255,209,.20)!important;}
-.brand-mark{background:#FF6700!important;box-shadow:0 0 18px rgba(255,103,0,.52)!important;}
+.brand-mark{background:#FF6700!important;color:#070A12!important;box-shadow:0 0 18px rgba(255,103,0,.52)!important;}
 .brand-eyebrow,.panel-kicker,.ticket-kicker{color:#FF6700!important;}
 .panel-kicker::before{background:#FF6700!important;box-shadow:0 0 10px rgba(255,103,0,.72)!important;}
 .trip-dot{background:#00FFD1!important;box-shadow:0 0 12px rgba(0,255,209,.80)!important;}
@@ -20,22 +21,24 @@ body{background:radial-gradient(circle at 8% 6%,rgba(255,103,0,.20),transparent 
 .icon-btn:hover,.mini-link:hover,.transport-links a:hover,.itinerary-ticket-links a:hover{border-color:#00FFD1!important;background:rgba(0,255,209,.09)!important;box-shadow:0 0 16px rgba(0,255,209,.18)!important;}
 .stop-card.map-focused{background:rgba(255,103,0,.14)!important;box-shadow:inset 4px 0 0 #FF6700,0 0 18px rgba(255,103,0,.18)!important;}
 .day-ticket-guide,.transport-recommend{background:rgba(255,103,0,.12)!important;border-left-color:#FF6700!important;}
-.day-ticket-icon,.transport-badge{background:#FF6700!important;box-shadow:0 0 16px rgba(255,103,0,.44)!important;}
+.day-ticket-icon,.transport-badge{background:#FF6700!important;color:#070A12!important;box-shadow:0 0 16px rgba(255,103,0,.44)!important;}
 .notice{background:rgba(0,255,209,.07)!important;border-left-color:#00FFD1!important;}
 .chip.active{background:#00FFD1!important;border-color:#00FFD1!important;color:#04110E!important;box-shadow:0 0 18px rgba(0,255,209,.46)!important;}
-.btn.primary{background:#FF6700!important;border-color:#FF6700!important;color:#fff!important;box-shadow:0 0 20px rgba(255,103,0,.38)!important;}
+.btn.primary{background:#FF6700!important;border-color:#FF6700!important;color:#070A12!important;box-shadow:0 0 20px rgba(255,103,0,.38)!important;}
 .poi-media{background:linear-gradient(145deg,#00FFD1,#4D5BFF 52%,#D900FF)!important;}
 .tag{background:rgba(77,91,255,.14)!important;color:#C9D0FF!important;border:1px solid rgba(77,91,255,.26)!important;}
 .cost-total{background:linear-gradient(135deg,rgba(217,0,255,.22),rgba(77,91,255,.20),rgba(255,103,0,.18))!important;border-color:rgba(217,0,255,.50)!important;box-shadow:0 0 24px rgba(217,0,255,.18)!important;}
 .transport-price{background:rgba(255,230,0,.14)!important;color:#FFF27A!important;border:1px solid rgba(255,230,0,.28)!important;}
-.app-icon{background:rgba(77,91,255,.14)!important;color:#7D8AFF!important;border:1px solid rgba(77,91,255,.30)!important;}
+.app-icon{background:rgba(77,91,255,.14)!important;color:#9EA8FF!important;border:1px solid rgba(77,91,255,.30)!important;}
 .day-picker{background:rgba(7,10,18,.92)!important;border-color:rgba(0,255,209,.28)!important;box-shadow:0 0 22px rgba(0,255,209,.10)!important;}
-.day-picker .seg-btn.active{background:#FF6700!important;border-color:#FF6700!important;box-shadow:0 0 18px rgba(255,103,0,.52)!important;}
+.day-picker .seg-btn.active{background:#FF6700!important;border-color:#FF6700!important;color:#070A12!important;box-shadow:0 0 18px rgba(255,103,0,.52)!important;}
 .map-fab{background:rgba(7,10,18,.92)!important;border-color:rgba(0,255,209,.32)!important;color:#fff!important;}
 .map-pane .map-fab.active{background:#00FFD1!important;border-color:#00FFD1!important;color:#04110E!important;box-shadow:0 0 20px rgba(0,255,209,.50)!important;}
 .status-card::before{background:#00FFD1!important;box-shadow:0 0 12px rgba(0,255,209,.65)!important;}
 .leaflet-control-zoom a{background:#0C111D!important;border-color:rgba(0,255,209,.32)!important;color:#fff!important;}
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#0D1220!important;color:#F7FAFF!important;}
+
+/* Exact route palette. Map lines, map pins, itinerary numbers and timeline nodes all use the same four colours. */
 #app [style*="#d94f33"],#app [style*="#D94F33"]{--day-color:#FF6700!important;}
 #app [style*="#0f766e"],#app [style*="#0F766E"]{--day-color:#00FFD1!important;}
 #app [style*="#7c3aed"],#app [style*="#7C3AED"]{--day-color:#B026FF!important;}
@@ -44,4 +47,47 @@ body{background:radial-gradient(circle at 8% 6%,rgba(255,103,0,.20),transparent 
 #app .leaflet-overlay-pane path[stroke="#0f766e"],#app .leaflet-overlay-pane path[stroke="#0F766E"]{stroke:#00FFD1!important;}
 #app .leaflet-overlay-pane path[stroke="#7c3aed"],#app .leaflet-overlay-pane path[stroke="#7C3AED"]{stroke:#B026FF!important;}
 #app .leaflet-overlay-pane path[stroke="#b7791f"],#app .leaflet-overlay-pane path[stroke="#B7791F"]{stroke:#FFE600!important;}
+
+.marker-pin[style*="#d94f33"],.marker-pin[style*="#D94F33"]{background:#FF6700!important;}
+.marker-pin[style*="#0f766e"],.marker-pin[style*="#0F766E"]{background:#00FFD1!important;}
+.marker-pin[style*="#7c3aed"],.marker-pin[style*="#7C3AED"]{background:#B026FF!important;}
+.marker-pin[style*="#b7791f"],.marker-pin[style*="#B7791F"]{background:#FFE600!important;}
+.marker-pin[style*="#d94f33"] span,.marker-pin[style*="#D94F33"] span,
+.marker-pin[style*="#0f766e"] span,.marker-pin[style*="#0F766E"] span,
+.marker-pin[style*="#b7791f"] span,.marker-pin[style*="#B7791F"] span{color:#070A12!important;}
+.marker-pin[style*="#7c3aed"] span,.marker-pin[style*="#7C3AED"] span{color:#FFFFFF!important;}
+
+.stop-card[style*="#d94f33"] .stop-number,.stop-card[style*="#D94F33"] .stop-number{background:#FF6700!important;color:#070A12!important;}
+.stop-card[style*="#0f766e"] .stop-number,.stop-card[style*="#0F766E"] .stop-number{background:#00FFD1!important;color:#04110E!important;}
+.stop-card[style*="#7c3aed"] .stop-number,.stop-card[style*="#7C3AED"] .stop-number{background:#B026FF!important;color:#FFFFFF!important;}
+.stop-card[style*="#b7791f"] .stop-number,.stop-card[style*="#B7791F"] .stop-number{background:#FFE600!important;color:#070A12!important;}
+.stop-card[style*="#d94f33"]::before,.stop-card[style*="#D94F33"]::before{background:#FF6700!important;}
+.stop-card[style*="#0f766e"]::before,.stop-card[style*="#0F766E"]::before{background:#00FFD1!important;}
+.stop-card[style*="#7c3aed"]::before,.stop-card[style*="#7C3AED"]::before{background:#B026FF!important;}
+.stop-card[style*="#b7791f"]::before,.stop-card[style*="#B7791F"]::before{background:#FFE600!important;}
+.timeline::before{background:rgba(185,197,216,.22)!important;opacity:1!important;}
+
+/* High-contrast text on solid neon surfaces. */
+.brand-mark,.btn.primary,.day-ticket-icon,.transport-badge,.day-picker .seg-btn.active{color:#070A12!important;}
+.brand-mark *, .btn.primary *, .day-ticket-icon *, .transport-badge *, .day-picker .seg-btn.active *{color:#070A12!important;}
+.chip.active,.map-pane .map-fab.active{color:#04110E!important;}
+.chip.active *, .map-pane .map-fab.active *{color:#04110E!important;}
+
+/* Less rounded throughout. Keep true circular indicators circular. */
+.brand-mark,.icon-btn,.btn,.chip,.seg-btn,.map-fab,.day-picker,.status-card,.map-legend,
+.metric,.stop-card,.stop-number,details.stop-details,.mini-link,.notice,select,input[type="number"],
+.poi-card,.poi-media,.tag,.cost-total,.audit-item,.app-card,.app-icon,.empty,.leaflet-popup-content-wrapper,
+.day-ticket-guide,.transport-recommend,.day-ticket-icon,.transport-badge,.itinerary-ticket-note,
+.transport-card,.transport-price,.transport-note,.transport-links a,.itinerary-ticket-links a{
+  border-radius:8px!important;
+}
+.icon-btn,.btn,.chip,.seg-btn,.map-fab,.stop-number,.mini-link,select,input[type="number"],.tag,
+.day-ticket-icon,.transport-badge,.transport-price,.transport-links a,.itinerary-ticket-links a,.app-icon{
+  border-radius:6px!important;
+}
+.marker-pin{border-radius:7px 7px 7px 2px!important;}
+.leaflet-control-zoom a:first-child{border-radius:6px 6px 0 0!important;}
+.leaflet-control-zoom a:last-child{border-radius:0 0 6px 6px!important;}
+.user-dot,.trip-dot,.stop-card::before{border-radius:50%!important;}
+
 .leaflet-tile-pane{filter:saturate(1.24) contrast(1.08) brightness(.78)!important;}
