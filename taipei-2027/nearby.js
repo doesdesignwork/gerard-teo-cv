@@ -1,3 +1,5 @@
+const poiImageCache = new Map();
+
 function getSearchOrigin() {
   const mode=document.getElementById('originSelect').value;
   if (mode==='current') {
@@ -18,16 +20,68 @@ function poiCategoryLabel(tags) {
   return tags.cuisine || tags.shop || tags.tourism || tags.amenity || 'Place';
 }
 
-function wikipediaImage(tags) {
-  if (tags.image && /^https?:\/\//.test(tags.image)) return Promise.resolve(tags.image);
-  if (!tags.wikipedia) return Promise.resolve(null);
-  const split=tags.wikipedia.split(':');
-  const lang=split.length>1?split.shift():'en';
-  const title=split.join(':');
-  return fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`)
-    .then(r=>r.ok?r.json():null)
-    .then(d=>d?.thumbnail?.source||null)
-    .catch(()=>null);
+function commonsFileUrl(fileName, width=420) {
+  if (!fileName) return null;
+  const clean=fileName.replace(/^File:/i,'');
+  return `https://commons.wikimedia.org/wiki/Special:Redirect/file/${encodeURIComponent(clean)}?width=${width}`;
+}
+
+async function wikidataImage(qid) {
+  if (!qid) return null;
+  try {
+    const r=await fetch(`https://www.wikidata.org/wiki/Special:EntityData/${encodeURIComponent(qid)}.json`);
+    if (!r.ok) return null;
+    const d=await r.json();
+    const file=d?.entities?.[qid]?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
+    return file?commonsFileUrl(file):null;
+  } catch { return null; }
+}
+
+async function wikipediaImage(tags) {
+  if (tags.image && /^https?:\/\//.test(tags.image)) return tags.image;
+  if (tags.wikimedia_commons && /^File:/i.test(tags.wikimedia_commons)) return commonsFileUrl(tags.wikimedia_commons);
+  if (tags.wikidata) {
+    const wd=await wikidataImage(tags.wikidata);
+    if (wd) return wd;
+  }
+  if (!tags.wikipedia) return null;
+  try {
+    const split=tags.wikipedia.split(':');
+    const lang=split.length>1?split.shift():'en';
+    const title=split.join(':');
+    const r=await fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+    if (!r.ok) return null;
+    const d=await r.json();
+    return d?.thumbnail?.source||null;
+  } catch { return null; }
+}
+
+async function commonsSearchImage(name) {
+  if (!name) return null;
+  try {
+    const query=new URLSearchParams({
+      action:'query',format:'json',origin:'*',generator:'search',
+      gsrsearch:`${name} Taipei`,gsrnamespace:'6',gsrlimit:'1',
+      prop:'imageinfo',iiprop:'url',iiurlwidth:'420'
+    });
+    const r=await fetch(`https://commons.wikimedia.org/w/api.php?${query.toString()}`);
+    if (!r.ok) return null;
+    const d=await r.json();
+    const pages=Object.values(d?.query?.pages||{});
+    const info=pages[0]?.imageinfo?.[0];
+    return info?.thumburl||info?.url||null;
+  } catch { return null; }
+}
+
+async function resolvePoiImage(poi) {
+  const key=`${poi.type}-${poi.id}`;
+  if (poiImageCache.has(key)) return poiImageCache.get(key);
+  const direct=await wikipediaImage(poi.tags);
+  if (direct) { poiImageCache.set(key,direct); return direct; }
+  const name=poi.tags['name:en']||poi.tags.name;
+  const searched=await commonsSearchImage(name);
+  poiImageCache.set(key,searched||null);
+  return searched||null;
 }
 
 function safeUrl(url) {
@@ -44,7 +98,7 @@ function renderPoiCard(poi) {
   const directions=`https://www.google.com/maps/dir/?api=1${state.currentLocation?`&origin=${state.currentLocation.lat},${state.currentLocation.lng}`:''}&destination=${poi.lat},${poi.lon}`;
   const address=[poi.tags['addr:housenumber'],poi.tags['addr:street'],poi.tags['addr:district']].filter(Boolean).join(' ');
   return `<article class="poi-card" data-poi-id="${poi.type}-${poi.id}">
-    <div class="poi-media" data-media>${icon}</div>
+    <div class="poi-media" data-media><div class="poi-photo-state"><div><strong>${icon}</strong>Finding photo…</div></div></div>
     <div class="poi-copy">
       <h3>${poi.tags.name||poi.tags['name:en']||'Unnamed place'}</h3>
       <p>${address||poi.tags.opening_hours||'OpenStreetMap place information'}</p>
@@ -57,6 +111,21 @@ function renderPoiCard(poi) {
       </div>
     </div>
   </article>`;
+}
+
+async function hydratePoiImage(poi,grid) {
+  const card=grid.querySelector(`[data-poi-id="${poi.type}-${poi.id}"] [data-media]`);
+  if (!card) return;
+  const image=await resolvePoiImage(poi);
+  if (!card.isConnected) return;
+  if (image) {
+    const alt=poi.tags.name||poi.tags['name:en']||'Nearby place';
+    card.innerHTML=`<img src="${image}" alt="${alt}" loading="lazy" referrerpolicy="no-referrer" /><span class="poi-photo-credit">Wikimedia</span>`;
+    const img=card.querySelector('img');
+    img.addEventListener('error',()=>{card.innerHTML='<div class="poi-photo-state"><div><strong>⌖</strong>Photo unavailable</div></div>';},{once:true});
+  } else {
+    card.innerHTML='<div class="poi-photo-state"><div><strong>⌖</strong>No free photo found</div></div>';
+  }
 }
 
 async function searchNearby() {
@@ -89,13 +158,10 @@ async function searchNearby() {
       return;
     }
     grid.innerHTML=data.map(renderPoiCard).join('');
-    status.textContent=`Showing ${data.length} places, nearest first. Links come from place tags when available.`;
-    data.forEach(async poi => {
-      const image=await wikipediaImage(poi.tags);
-      if (!image) return;
-      const card=grid.querySelector(`[data-poi-id="${poi.type}-${poi.id}"] [data-media]`);
-      if (card) card.innerHTML=`<img src="${image}" alt="${poi.tags.name||'Nearby place'}" loading="lazy" referrerpolicy="no-referrer" />`;
-    });
+    status.textContent=`Showing ${data.length} places, nearest first. Free photos are sourced from Wikimedia when available.`;
+    const queue=[...data];
+    const workers=Array.from({length:3},async()=>{while(queue.length){const poi=queue.shift();await hydratePoiImage(poi,grid);}});
+    await Promise.all(workers);
   } catch(e) {
     status.textContent=e.message;
     grid.innerHTML='<div class="empty">Nearby live data is unavailable right now. The itinerary tab still contains curated stops and working official or Maps links.</div>';
