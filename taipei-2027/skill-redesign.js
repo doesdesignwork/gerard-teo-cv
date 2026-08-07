@@ -42,8 +42,6 @@
   syncTabs();
   syncDayButtons();
 
-  /* Capture phase makes this the single theme controller and prevents the older
-     app.js click handler from toggling a second time. */
   themeBtn?.addEventListener('click', event => {
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -75,8 +73,6 @@
     });
   }
 
-  /* Around Me resilience: use several current public Overpass instances instead
-     of failing the whole feature when one community server is busy. */
   const nearbyBtn = document.getElementById('searchNearbyBtn');
   const OVERPASS_ENDPOINTS = [
     'https://overpass.private.coffee/api/interpreter',
@@ -230,10 +226,21 @@
     hydrateImagesSafely(data,grid);
   }
 
-  /* Capture phase prevents the older single-endpoint handler from also running. */
   nearbyBtn?.addEventListener('click', event => {
     event.preventDefault();
     event.stopImmediatePropagation();
     resilientSearchNearby();
   }, true);
+
+  if (!document.querySelector('link[href="itinerary-customizer.css"]')) {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = 'itinerary-customizer.css';
+    document.head.appendChild(style);
+  }
+  if (!document.querySelector('script[src="itinerary-customizer.js"]')) {
+    const customizer = document.createElement('script');
+    customizer.src = 'itinerary-customizer.js';
+    document.body.appendChild(customizer);
+  }
 })();
