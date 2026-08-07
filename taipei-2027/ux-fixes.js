@@ -36,6 +36,12 @@
     consistency.href='biryani-consistency.css';
     document.head.appendChild(consistency);
   }
+  if(!document.querySelector('link[href="neon-vibrant.css"]')){
+    const neon=document.createElement('link');
+    neon.rel='stylesheet';
+    neon.href='neon-vibrant.css';
+    document.head.appendChild(neon);
+  }
 
   /* Final type override. */
   if(!document.getElementById('biryani-final-type-fix')){
