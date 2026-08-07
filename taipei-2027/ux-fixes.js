@@ -66,7 +66,7 @@
       #app .popup-title,
       #app .day-ticket-guide strong{
         font-family:"Biryani",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
-        font-weight:600!important;
+        font-weight:400!important;
       }
 
       #app .brand h1,
