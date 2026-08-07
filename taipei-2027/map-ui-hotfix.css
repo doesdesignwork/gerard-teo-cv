@@ -1,9 +1,16 @@
-/* Map UI hotfix: mobile alignment, visibility and control spacing */
+/* Map UI hotfix: consistent spacing, alignment and edge rhythm */
+
+/* One spacing system for every map overlay. */
+.map-pane{
+  --map-edge:18px;
+  --map-gap:16px;
+  --map-control-size:46px;
+}
 
 /* Native Leaflet zoom controls sit below the route/day selector. */
 .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
   top:88px!important;
-  left:18px!important;
+  left:var(--map-edge)!important;
 }
 .map-pane .leaflet-left .leaflet-control,
 .map-pane .leaflet-control-zoom{
@@ -15,9 +22,9 @@
   overflow:hidden!important;
 }
 .map-pane .leaflet-control-zoom a{
-  width:46px!important;
-  height:46px!important;
-  line-height:46px!important;
+  width:var(--map-control-size)!important;
+  height:var(--map-control-size)!important;
+  line-height:var(--map-control-size)!important;
   background:#17211f!important;
   color:#fff!important;
   border-color:rgba(255,255,255,.18)!important;
@@ -31,8 +38,8 @@
 
 /* Explicit map action styling so locate/follow controls never disappear into the map. */
 .map-pane .map-fab{
-  width:46px!important;
-  height:46px!important;
+  width:var(--map-control-size)!important;
+  height:var(--map-control-size)!important;
   background:#17211f!important;
   color:#fff!important;
   border:1px solid rgba(255,255,255,.22)!important;
@@ -48,9 +55,7 @@
   background:#087f72!important;
   border-color:#38b9a8!important;
 }
-.map-pane .map-fab:disabled{
-  opacity:.55!important;
-}
+.map-pane .map-fab:disabled{opacity:.55!important;}
 
 /* Readable bottom overlays. */
 .map-legend{
@@ -60,10 +65,7 @@
   box-shadow:0 10px 28px rgba(0,0,0,.26)!important;
   text-shadow:none!important;
 }
-.map-legend span{
-  color:#fff!important;
-  opacity:1!important;
-}
+.map-legend span{color:#fff!important;opacity:1!important;}
 .status-card{
   position:relative!important;
   background:rgba(23,33,31,.97)!important;
@@ -73,28 +75,29 @@
   text-shadow:none!important;
 }
 .status-card strong,
-#locationHeadline{
-  color:#fff!important;
-  opacity:1!important;
-  font-weight:850!important;
-}
+#locationHeadline{color:#fff!important;opacity:1!important;font-weight:850!important;}
 .status-card span,
-#locationDetail{
-  color:rgba(255,255,255,.9)!important;
-  opacity:1!important;
-}
+#locationDetail{color:rgba(255,255,255,.9)!important;opacity:1!important;}
 .status-card::before{background:#38b9a8!important;}
 
-/* Desktop/split layout keeps overlays tidy. */
-.map-legend{max-width:min(360px,calc(100% - 36px))!important;}
+/* Desktop/split layout keeps overlays tidy and on the same edge grid. */
+.map-legend{
+  left:var(--map-edge)!important;
+  max-width:min(360px,calc(100% - (var(--map-edge) * 2)))!important;
+}
+.map-status{
+  left:var(--map-edge)!important;
+  right:var(--map-edge)!important;
+  bottom:var(--map-edge)!important;
+}
 .status-card{max-width:min(620px,calc(100% - 4px))!important;}
 
-/* Tablet and phone map layout. This breakpoint matches when the app stacks vertically. */
+/* Tablet and phone map layout. */
 @media(max-width:920px){
   .map-controls{
-    top:16px!important;
-    left:18px!important;
-    right:18px!important;
+    top:var(--map-edge)!important;
+    left:var(--map-edge)!important;
+    right:var(--map-edge)!important;
     display:block!important;
   }
 
@@ -111,10 +114,10 @@
   }
   .day-picker::-webkit-scrollbar{display:none!important;}
 
-  /* Zoom and location controls form a clean second row below the selector. */
+  /* Exactly 16px below the 64px selector: 18 + 64 + 16 = 98px. */
   .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
-    top:96px!important;
-    left:18px!important;
+    top:98px!important;
+    left:var(--map-edge)!important;
   }
   .map-pane .leaflet-left .leaflet-control{margin-left:0!important;}
   .locate-stack{
@@ -123,27 +126,15 @@
     right:0!important;
     display:flex!important;
     flex-direction:column!important;
-    gap:8px!important;
+    gap:var(--map-gap)!important;
     z-index:780!important;
   }
 
-  /* Bottom cards share the same left/right grid and stay above each other. */
-  .map-legend{
-    left:18px!important;
-    right:18px!important;
-    bottom:104px!important;
-    width:auto!important;
-    max-width:none!important;
-    min-height:42px!important;
-    padding:10px 14px!important;
-    border-radius:14px!important;
-    font-size:12px!important;
-    line-height:1.35!important;
-  }
+  /* Bottom cards: same 18px edge inset and exactly 16px vertical gap. */
   .map-status{
-    left:18px!important;
-    right:18px!important;
-    bottom:18px!important;
+    left:var(--map-edge)!important;
+    right:var(--map-edge)!important;
+    bottom:var(--map-edge)!important;
   }
   .status-card{
     width:100%!important;
@@ -151,46 +142,57 @@
     min-height:76px!important;
     padding:12px 16px 12px 20px!important;
     border-radius:17px!important;
+    box-sizing:border-box!important;
   }
   .status-card strong{font-size:15px!important;line-height:1.25!important;}
   .status-card span{font-size:12px!important;line-height:1.45!important;}
+
+  .map-legend{
+    left:var(--map-edge)!important;
+    right:var(--map-edge)!important;
+    bottom:110px!important; /* 18 bottom + 76 status + 16 gap */
+    width:auto!important;
+    max-width:none!important;
+    min-height:42px!important;
+    padding:10px 14px!important;
+    border-radius:14px!important;
+    font-size:12px!important;
+    line-height:1.35!important;
+    box-sizing:border-box!important;
+  }
 }
 
-/* Narrow phones: preserve the same 18px left alignment across selector, zoom and dialogs. */
+/* Narrow phones: same spacing system, slightly smaller controls only. */
 @media(max-width:560px){
-  .map-controls{top:12px!important;left:18px!important;right:18px!important;}
-  .day-picker{min-height:58px!important;max-width:100%!important;}
+  .map-pane{--map-control-size:44px;}
+
+  .map-controls{
+    top:12px!important;
+    left:var(--map-edge)!important;
+    right:var(--map-edge)!important;
+  }
+  .day-picker{
+    min-height:58px!important;
+    max-width:100%!important;
+  }
   .day-picker .seg-btn{min-height:46px!important;}
 
+  /* 12 + 58 + 16 = 86px, matching the selector edge and rhythm. */
   .map-pane .leaflet-control-container .leaflet-top.leaflet-left{
-    top:84px!important;
-    left:18px!important;
+    top:86px!important;
+    left:var(--map-edge)!important;
   }
   .map-pane .leaflet-left .leaflet-control{margin-left:0!important;}
   .locate-stack{
-    top:72px!important;
+    top:74px!important; /* relative to map-controls at 12px => absolute 86px */
     right:0!important;
+    gap:var(--map-gap)!important;
   }
 
-  .map-pane .leaflet-control-zoom a,
-  .map-pane .map-fab{
-    width:44px!important;
-    height:44px!important;
-    line-height:44px!important;
-  }
-
-  .map-legend{
-    left:18px!important;
-    right:18px!important;
-    bottom:100px!important;
-    min-height:40px!important;
-    padding:9px 12px!important;
-    font-size:11px!important;
-  }
   .map-status{
-    left:18px!important;
-    right:18px!important;
-    bottom:18px!important;
+    left:var(--map-edge)!important;
+    right:var(--map-edge)!important;
+    bottom:var(--map-edge)!important;
   }
   .status-card{
     min-height:72px!important;
@@ -198,6 +200,15 @@
   }
   .status-card strong{font-size:14px!important;}
   .status-card span{font-size:11px!important;}
+
+  .map-legend{
+    left:var(--map-edge)!important;
+    right:var(--map-edge)!important;
+    bottom:106px!important; /* 18 bottom + 72 status + 16 gap */
+    min-height:40px!important;
+    padding:9px 12px!important;
+    font-size:11px!important;
+  }
 }
 
 [data-theme="dark"] .map-pane .leaflet-control-zoom a,
