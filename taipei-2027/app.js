@@ -17,6 +17,7 @@ const state = {
 const appEl = document.getElementById('app');
 const savedTheme = localStorage.getItem('taipei-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 appEl.dataset.theme = savedTheme;
+document.documentElement.dataset.theme = savedTheme;
 document.getElementById('themeBtn').textContent = savedTheme === 'dark' ? '☀' : '☾';
 
 const map = L.map('map', { zoomControl:true, preferCanvas:true }).setView([25.055,121.535], 12);
@@ -223,6 +224,7 @@ document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',
 document.getElementById('themeBtn').addEventListener('click',() => {
   const next=appEl.dataset.theme==='dark'?'light':'dark';
   appEl.dataset.theme=next;
+  document.documentElement.dataset.theme=next;
   localStorage.setItem('taipei-theme',next);
   document.getElementById('themeBtn').textContent=next==='dark'?'☀':'☾';
 });
