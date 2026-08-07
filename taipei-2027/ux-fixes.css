@@ -1,0 +1,56 @@
+/* UX clarity fixes: day navigation + nearby imagery */
+.day-picker{
+  gap:8px!important;
+  padding:8px!important;
+  max-width:none!important;
+  background:rgba(20,28,26,.88)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:18px!important;
+  backdrop-filter:blur(18px)!important;
+}
+.day-picker .seg-btn{
+  min-width:76px!important;
+  min-height:50px!important;
+  padding:7px 12px!important;
+  border:1px solid transparent!important;
+  border-radius:13px!important;
+  color:rgba(255,255,255,.66)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:1px!important;
+  line-height:1.05!important;
+  font-weight:800!important;
+}
+.day-picker .seg-btn .day-kicker{font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:900}
+.day-picker .seg-btn .day-date{font-size:13px;letter-spacing:-.01em;white-space:nowrap}
+.day-picker .seg-btn:hover{color:#fff!important;background:rgba(255,255,255,.08)!important}
+.day-picker .seg-btn.active{
+  color:#fff!important;
+  background:#ff6f5b!important;
+  border-color:#ff8b79!important;
+  box-shadow:0 7px 18px rgba(255,111,91,.33)!important;
+}
+.day-picker .seg-btn[data-day="0"]{min-width:92px!important}
+.poi-card{grid-template-columns:132px minmax(0,1fr)!important;min-height:146px!important}
+.poi-media{position:relative!important;min-height:146px!important;overflow:hidden!important;background:linear-gradient(145deg,#24c8bb,#7c8ff5)!important}
+.poi-media img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;transition:transform .35s ease!important}
+.poi-card:hover .poi-media img{transform:scale(1.035)}
+.poi-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.22),transparent 50%);pointer-events:none}
+.poi-media .poi-photo-state{position:relative;z-index:2;width:100%;height:100%;min-height:146px;display:grid;place-items:center;padding:14px;text-align:center;color:#fff;font-size:12px;font-weight:800;letter-spacing:.02em}
+.poi-media .poi-photo-state strong{display:block;font-size:24px;margin-bottom:5px}
+.poi-photo-credit{position:absolute;left:8px;bottom:7px;z-index:3;padding:3px 6px;border-radius:7px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;line-height:1.2;opacity:.85}
+@media(max-width:920px){
+  .day-picker{max-width:calc(100vw - 82px)!important;overflow-x:auto!important;flex-wrap:nowrap!important;scrollbar-width:none}
+  .day-picker::-webkit-scrollbar{display:none}
+  .day-picker .seg-btn{min-width:76px!important}
+}
+@media(max-width:560px){
+  .day-picker{padding:6px!important;gap:5px!important}
+  .day-picker .seg-btn{min-width:70px!important;min-height:46px!important;padding:6px 8px!important}
+  .day-picker .seg-btn[data-day="0"]{min-width:82px!important}
+  .day-picker .seg-btn .day-date{font-size:12px}
+  .poi-card{grid-template-columns:104px minmax(0,1fr)!important;min-height:138px!important}
+  .poi-media,.poi-media .poi-photo-state{min-height:138px!important}
+}
