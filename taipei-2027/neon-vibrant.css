@@ -47,16 +47,12 @@ body{background:radial-gradient(circle at 8% 6%,rgba(255,103,0,.20),transparent 
 #app .leaflet-overlay-pane path[stroke="#0f766e"],#app .leaflet-overlay-pane path[stroke="#0F766E"]{stroke:#00FFD1!important;}
 #app .leaflet-overlay-pane path[stroke="#7c3aed"],#app .leaflet-overlay-pane path[stroke="#7C3AED"]{stroke:#B026FF!important;}
 #app .leaflet-overlay-pane path[stroke="#b7791f"],#app .leaflet-overlay-pane path[stroke="#B7791F"]{stroke:#FFE600!important;}
-
 .marker-pin[style*="#d94f33"],.marker-pin[style*="#D94F33"]{background:#FF6700!important;}
 .marker-pin[style*="#0f766e"],.marker-pin[style*="#0F766E"]{background:#00FFD1!important;}
 .marker-pin[style*="#7c3aed"],.marker-pin[style*="#7C3AED"]{background:#B026FF!important;}
 .marker-pin[style*="#b7791f"],.marker-pin[style*="#B7791F"]{background:#FFE600!important;}
-.marker-pin[style*="#d94f33"] span,.marker-pin[style*="#D94F33"] span,
-.marker-pin[style*="#0f766e"] span,.marker-pin[style*="#0F766E"] span,
-.marker-pin[style*="#b7791f"] span,.marker-pin[style*="#B7791F"] span{color:#070A12!important;}
+.marker-pin[style*="#d94f33"] span,.marker-pin[style*="#D94F33"] span,.marker-pin[style*="#0f766e"] span,.marker-pin[style*="#0F766E"] span,.marker-pin[style*="#b7791f"] span,.marker-pin[style*="#B7791F"] span{color:#070A12!important;}
 .marker-pin[style*="#7c3aed"] span,.marker-pin[style*="#7C3AED"] span{color:#FFFFFF!important;}
-
 .stop-card[style*="#d94f33"] .stop-number,.stop-card[style*="#D94F33"] .stop-number{background:#FF6700!important;color:#070A12!important;}
 .stop-card[style*="#0f766e"] .stop-number,.stop-card[style*="#0F766E"] .stop-number{background:#00FFD1!important;color:#04110E!important;}
 .stop-card[style*="#7c3aed"] .stop-number,.stop-card[style*="#7C3AED"] .stop-number{background:#B026FF!important;color:#FFFFFF!important;}
@@ -74,20 +70,37 @@ body{background:radial-gradient(circle at 8% 6%,rgba(255,103,0,.20),transparent 
 .chip.active *, .map-pane .map-fab.active *{color:#04110E!important;}
 
 /* Less rounded throughout. Keep true circular indicators circular. */
-.brand-mark,.icon-btn,.btn,.chip,.seg-btn,.map-fab,.day-picker,.status-card,.map-legend,
-.metric,.stop-card,.stop-number,details.stop-details,.mini-link,.notice,select,input[type="number"],
-.poi-card,.poi-media,.tag,.cost-total,.audit-item,.app-card,.app-icon,.empty,.leaflet-popup-content-wrapper,
-.day-ticket-guide,.transport-recommend,.day-ticket-icon,.transport-badge,.itinerary-ticket-note,
-.transport-card,.transport-price,.transport-note,.transport-links a,.itinerary-ticket-links a{
-  border-radius:8px!important;
-}
-.icon-btn,.btn,.chip,.seg-btn,.map-fab,.stop-number,.mini-link,select,input[type="number"],.tag,
-.day-ticket-icon,.transport-badge,.transport-price,.transport-links a,.itinerary-ticket-links a,.app-icon{
-  border-radius:6px!important;
-}
+.brand-mark,.icon-btn,.btn,.chip,.seg-btn,.map-fab,.day-picker,.status-card,.map-legend,.metric,.stop-card,.stop-number,details.stop-details,.mini-link,.notice,select,input[type="number"],.poi-card,.poi-media,.tag,.cost-total,.audit-item,.app-card,.app-icon,.empty,.leaflet-popup-content-wrapper,.day-ticket-guide,.transport-recommend,.day-ticket-icon,.transport-badge,.itinerary-ticket-note,.transport-card,.transport-price,.transport-note,.transport-links a,.itinerary-ticket-links a{border-radius:8px!important;}
+.icon-btn,.btn,.chip,.seg-btn,.map-fab,.stop-number,.mini-link,select,input[type="number"],.tag,.day-ticket-icon,.transport-badge,.transport-price,.transport-links a,.itinerary-ticket-links a,.app-icon{border-radius:6px!important;}
 .marker-pin{border-radius:7px 7px 7px 2px!important;}
 .leaflet-control-zoom a:first-child{border-radius:6px 6px 0 0!important;}
 .leaflet-control-zoom a:last-child{border-radius:0 0 6px 6px!important;}
 .user-dot,.trip-dot,.stop-card::before{border-radius:50%!important;}
-
 .leaflet-tile-pane{filter:saturate(1.24) contrast(1.08) brightness(.78)!important;}
+
+/* Real light mode. The previous neon layer intentionally used one dark palette for both themes. */
+#app[data-theme="light"]{
+  --paper:#F7FAFF!important;--paper-2:#ECF3FF!important;--surface:#FFFFFF!important;--surface-strong:#F8FBFF!important;
+  --ink:#111827!important;--ink-soft:#4B5563!important;--line:rgba(77,91,255,.20)!important;--line-strong:rgba(217,0,255,.28)!important;
+  --ui-bg:#F7FAFF!important;--ui-panel:#FFFFFF!important;--ui-surface:#FFFFFF!important;--ui-surface-muted:#EEF4FF!important;
+  --ui-ink:#111827!important;--ui-muted:#4B5563!important;--ui-line:rgba(77,91,255,.20)!important;--ui-line-strong:rgba(217,0,255,.28)!important;
+  color:#111827!important;background:#F7FAFF!important;
+}
+html:has(#app[data-theme="light"]),body:has(#app[data-theme="light"]){background:#F7FAFF!important;color:#111827!important;}
+body:has(#app[data-theme="light"]){background:radial-gradient(circle at 8% 6%,rgba(255,103,0,.12),transparent 28rem),radial-gradient(circle at 92% 12%,rgba(0,255,209,.12),transparent 30rem),#F7FAFF!important;}
+#app[data-theme="light"] .topbar{background:rgba(255,255,255,.94)!important;border-bottom-color:rgba(77,91,255,.18)!important;box-shadow:0 8px 24px rgba(77,91,255,.07)!important;}
+#app[data-theme="light"] .side-pane{background:#FFFFFF!important;border-color:rgba(77,91,255,.18)!important;}
+#app[data-theme="light"] .tabs{background:#FFFFFF!important;border-bottom-color:rgba(77,91,255,.18)!important;}
+#app[data-theme="light"] .tab-btn{color:#596274!important;}
+#app[data-theme="light"] .tab-btn.active{color:#111827!important;}
+#app[data-theme="light"] .icon-btn,#app[data-theme="light"] .mini-link,#app[data-theme="light"] .transport-links a,#app[data-theme="light"] .itinerary-ticket-links a,#app[data-theme="light"] select,#app[data-theme="light"] input[type="number"]{background:#FFFFFF!important;border-color:rgba(77,91,255,.24)!important;color:#111827!important;}
+#app[data-theme="light"] .metric,#app[data-theme="light"] .stop-card,#app[data-theme="light"] .transport-card,#app[data-theme="light"] .app-card{background:#FFFFFF!important;color:#111827!important;}
+#app[data-theme="light"] .notice{background:rgba(0,255,209,.09)!important;color:#374151!important;}
+#app[data-theme="light"] .tag{background:rgba(77,91,255,.09)!important;color:#3642C7!important;}
+#app[data-theme="light"] .transport-price{background:rgba(255,230,0,.22)!important;color:#665C00!important;}
+#app[data-theme="light"] .leaflet-popup-content-wrapper,#app[data-theme="light"] .leaflet-popup-tip{background:#FFFFFF!important;color:#111827!important;}
+#app[data-theme="light"] .leaflet-control-zoom a{background:#FFFFFF!important;color:#111827!important;border-color:rgba(77,91,255,.26)!important;}
+#app[data-theme="light"] .status-card,#app[data-theme="light"] .map-legend{background:rgba(255,255,255,.94)!important;color:#111827!important;border-color:rgba(77,91,255,.20)!important;}
+#app[data-theme="light"] .status-card span{color:#4B5563!important;}
+#app[data-theme="light"] .day-picker{background:rgba(17,24,39,.94)!important;}
+#app[data-theme="light"] .leaflet-tile-pane{filter:saturate(1.05) contrast(1.02) brightness(1.02)!important;}
