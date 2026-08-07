@@ -1,0 +1,429 @@
+/* Biryani + UI consistency pass
+   Final cascade layer. Keeps route/map behaviour intact while normalising type,
+   spacing, control sizes and map-edge rhythm across desktop and mobile. */
+
+:root{
+  --font-ui:"Biryani",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --space-7:48px;
+  --control-h:44px;
+  --control-radius:10px;
+  --content-radius:12px;
+}
+
+/* One type family everywhere. Unsupported glyphs, such as the 台 brand mark,
+   naturally fall back to the platform CJK font. */
+html,
+body,
+body *,
+body *::before,
+body *::after,
+.leaflet-container,
+.leaflet-container *,
+.leaflet-container *::before,
+.leaflet-container *::after{
+  font-family:var(--font-ui)!important;
+}
+
+body{
+  font-size:16px!important;
+  line-height:1.55!important;
+  font-weight:400!important;
+}
+
+/* Type scale */
+.brand h1{
+  font-size:28px!important;
+  line-height:1.12!important;
+  font-weight:800!important;
+  letter-spacing:-.025em!important;
+}
+.brand-eyebrow,
+.panel-kicker,
+.ticket-kicker{
+  font-size:11px!important;
+  line-height:1.25!important;
+  font-weight:800!important;
+  letter-spacing:.08em!important;
+}
+.brand p{
+  font-size:13px!important;
+  line-height:1.4!important;
+  font-weight:600!important;
+}
+.section-head h2{
+  max-width:20ch!important;
+  font-size:clamp(30px,2.7vw,40px)!important;
+  line-height:1.15!important;
+  font-weight:800!important;
+  letter-spacing:-.025em!important;
+}
+.section-head p{
+  font-size:14px!important;
+  line-height:1.55!important;
+}
+.stop-title,
+.poi-copy h3,
+.transport-card h3,
+.transport-recommend h3,
+.app-card h3{
+  font-size:17px!important;
+  line-height:1.4!important;
+  font-weight:700!important;
+  letter-spacing:-.01em!important;
+}
+.stop-meta,
+.small-note,
+.poi-copy p,
+.app-card p,
+.transport-sub,
+.transport-note,
+.privacy{
+  font-size:13px!important;
+  line-height:1.55!important;
+}
+.metric span,
+.transport-price,
+.tag{
+  font-size:11px!important;
+  line-height:1.35!important;
+  font-weight:700!important;
+}
+.metric strong{
+  font-size:16px!important;
+  line-height:1.4!important;
+  font-weight:700!important;
+}
+
+/* Global section rhythm */
+.topbar{
+  min-height:88px!important;
+  padding:var(--space-3) var(--space-5)!important;
+  gap:var(--space-4)!important;
+}
+.brand{gap:var(--space-3)!important;}
+.trip-ribbon{margin-right:var(--space-3)!important;}
+.trip-pill{
+  min-height:40px!important;
+  padding:var(--space-2) var(--space-3)!important;
+  gap:var(--space-2)!important;
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+.trip-pill b{font-size:12px!important;}
+.top-actions{gap:var(--space-2)!important;}
+
+.side-pane{
+  padding:var(--space-5) var(--space-5) var(--space-7)!important;
+}
+.tab-panel{padding-top:var(--space-5)!important;}
+.panel-kicker{margin-bottom:var(--space-2)!important;}
+.section-head{
+  gap:var(--space-4)!important;
+  margin-bottom:var(--space-4)!important;
+}
+.section-head p{margin-top:var(--space-1)!important;}
+
+/* Controls: common height, radius, padding, gaps */
+.icon-btn,
+.btn,
+.chip,
+.mini-link,
+.transport-links a,
+.itinerary-ticket-links a,
+.map-fab{
+  min-height:var(--control-h)!important;
+  border-radius:var(--control-radius)!important;
+}
+.icon-btn,
+.map-fab{
+  width:var(--control-h)!important;
+  height:var(--control-h)!important;
+  padding:0!important;
+}
+#themeBtn{
+  width:auto!important;
+  min-width:72px!important;
+  height:var(--control-h)!important;
+  padding:0 var(--space-3)!important;
+  font-size:12px!important;
+  line-height:1!important;
+}
+.btn,
+.chip,
+.mini-link,
+.transport-links a,
+.itinerary-ticket-links a{
+  padding:var(--space-2) var(--space-3)!important;
+  font-size:13px!important;
+  line-height:1.25!important;
+  font-weight:700!important;
+}
+.tabs{min-height:50px!important;}
+.tab-btn{
+  min-height:50px!important;
+  padding:0 var(--space-3)!important;
+  font-size:13px!important;
+  line-height:1.2!important;
+  font-weight:700!important;
+}
+.field-row{gap:var(--space-3)!important;}
+label.field{gap:var(--space-2)!important;font-size:12px!important;line-height:1.35!important;}
+select,
+input[type="number"]{
+  min-height:var(--control-h)!important;
+  padding:9px var(--space-3)!important;
+  border-radius:var(--control-radius)!important;
+  font-size:14px!important;
+  line-height:1.25!important;
+}
+.category-row,
+.link-row,
+.transport-links,
+.itinerary-ticket-links{
+  gap:var(--space-2)!important;
+}
+.poi-filters{gap:var(--space-3)!important;margin-bottom:var(--space-4)!important;}
+
+/* Summary */
+.trip-summary{margin-bottom:var(--space-5)!important;}
+.metric{
+  min-height:80px!important;
+  padding:var(--space-3) var(--space-4)!important;
+}
+.metric strong{margin-top:var(--space-1)!important;}
+
+/* Itinerary rows */
+.stop-main{
+  padding:var(--space-4) var(--space-1)!important;
+  gap:var(--space-3)!important;
+}
+.stop-number{
+  width:36px!important;
+  height:36px!important;
+  border-radius:var(--control-radius)!important;
+  font-size:13px!important;
+  line-height:1!important;
+}
+.stop-meta{margin-top:2px!important;}
+details.stop-details summary{
+  padding:0 var(--space-1) var(--space-3) 52px!important;
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+.stop-body{
+  padding:0 var(--space-1) var(--space-4) 52px!important;
+}
+.stop-body>p{margin:0 0 var(--space-3)!important;}
+
+/* Ticket callouts */
+.day-ticket-guide,
+.transport-recommend{
+  gap:var(--space-3)!important;
+  padding:var(--space-4)!important;
+  margin-bottom:var(--space-5)!important;
+}
+.day-ticket-icon,
+.transport-badge{
+  width:44px!important;
+  min-width:44px!important;
+  height:44px!important;
+  border-radius:var(--control-radius)!important;
+  font-size:17px!important;
+}
+.day-ticket-guide strong,
+.transport-recommend h3{font-size:16px!important;line-height:1.4!important;}
+.day-ticket-guide p,
+.transport-recommend p{margin-top:var(--space-1)!important;font-size:13px!important;line-height:1.55!important;}
+.itinerary-ticket-note{
+  margin:0 0 var(--space-3)!important;
+  padding:var(--space-3)!important;
+}
+.itinerary-ticket-note>span{font-size:10px!important;line-height:1.35!important;}
+.itinerary-ticket-note>strong{font-size:14px!important;line-height:1.4!important;}
+.itinerary-ticket-note>p{margin-top:var(--space-1)!important;font-size:12.5px!important;line-height:1.55!important;}
+.itinerary-ticket-links{margin-top:var(--space-2)!important;}
+
+/* Nearby explorer */
+.notice{
+  margin-bottom:var(--space-4)!important;
+  padding:var(--space-3) var(--space-4)!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+}
+.poi-card{
+  min-height:152px!important;
+  padding:var(--space-4) 0!important;
+  gap:var(--space-4)!important;
+}
+.poi-media{
+  min-height:120px!important;
+  border-radius:var(--content-radius)!important;
+}
+.poi-media .poi-photo-state{min-height:120px!important;padding:var(--space-3)!important;}
+.poi-copy{padding:var(--space-1) 0!important;}
+.poi-copy p{margin:var(--space-1) 0!important;}
+.poi-tags{gap:6px!important;margin:var(--space-2) 0!important;}
+.tag{padding:4px 7px!important;}
+.empty{padding:var(--space-6) var(--space-4)!important;}
+
+/* Costs */
+.cost-row{
+  gap:var(--space-2)!important;
+  padding:var(--space-3) var(--space-1)!important;
+}
+.cost-total{
+  margin-top:var(--space-5)!important;
+  padding:var(--space-4)!important;
+}
+.cost-total strong{
+  margin:var(--space-1) 0!important;
+  font-size:25px!important;
+  line-height:1.25!important;
+}
+.audit-list{margin-top:var(--space-4)!important;}
+.audit-item{
+  gap:var(--space-2)!important;
+  padding:var(--space-3) var(--space-1)!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+}
+
+/* Transport */
+.transport-flow{margin:var(--space-4) 0 var(--space-5)!important;}
+.transport-flow div{padding:var(--space-3)!important;}
+.transport-flow b{font-size:10px!important;line-height:1.35!important;}
+.transport-flow span{margin-top:2px!important;font-size:12.5px!important;line-height:1.45!important;}
+.transport-card{padding:var(--space-5) var(--space-1)!important;}
+.transport-card-head{gap:var(--space-3)!important;margin-bottom:var(--space-3)!important;}
+.transport-steps{gap:var(--space-2)!important;margin-bottom:var(--space-3)!important;}
+.transport-steps li{gap:var(--space-2)!important;font-size:13px!important;line-height:1.55!important;}
+.transport-steps li span:first-child{
+  width:28px!important;
+  height:28px!important;
+  font-size:10px!important;
+  line-height:1!important;
+}
+.transport-note{margin-top:var(--space-4)!important;padding:var(--space-3) var(--space-4)!important;}
+
+/* Apps */
+.app-card{
+  gap:var(--space-3)!important;
+  padding:var(--space-4) var(--space-1)!important;
+}
+.app-icon{
+  width:40px!important;
+  height:40px!important;
+  border-radius:var(--control-radius)!important;
+}
+.app-card p{margin-top:2px!important;}
+.privacy{margin-top:var(--space-5)!important;}
+
+/* Map controls use the same 24px outer edge and 12px vertical rhythm. */
+.map-pane{
+  --map-edge:24px!important;
+  --map-gap:12px!important;
+  --map-selector-h:58px;
+  --map-control-size:44px!important;
+}
+.map-controls{
+  top:var(--map-edge)!important;
+  left:var(--map-edge)!important;
+  right:var(--map-edge)!important;
+}
+.day-picker{
+  gap:var(--space-2)!important;
+  padding:var(--space-2)!important;
+  min-height:var(--map-selector-h)!important;
+  border-radius:var(--content-radius)!important;
+}
+.day-picker .seg-btn{
+  min-width:76px!important;
+  min-height:42px!important;
+  padding:6px var(--space-3)!important;
+  border-radius:var(--control-radius)!important;
+  line-height:1.15!important;
+}
+.day-picker .seg-btn[data-day="0"]{min-width:88px!important;}
+.day-picker .seg-btn .day-kicker{font-size:9px!important;line-height:1.2!important;letter-spacing:.07em!important;}
+.day-picker .seg-btn .day-date{font-size:12px!important;line-height:1.25!important;}
+.map-pane .leaflet-control-container .leaflet-top.leaflet-left{
+  top:calc(var(--map-edge) + var(--map-selector-h) + var(--map-gap))!important;
+  left:var(--map-edge)!important;
+}
+.locate-stack{
+  top:calc(var(--map-selector-h) + var(--map-gap))!important;
+  right:0!important;
+  gap:var(--map-gap)!important;
+}
+.map-pane .leaflet-control-zoom a{
+  width:var(--map-control-size)!important;
+  height:var(--map-control-size)!important;
+  line-height:var(--map-control-size)!important;
+  font-size:20px!important;
+}
+.map-fab{
+  width:var(--map-control-size)!important;
+  height:var(--map-control-size)!important;
+  font-size:18px!important;
+}
+.map-status{
+  left:var(--map-edge)!important;
+  right:var(--map-edge)!important;
+  bottom:calc(var(--map-edge) + env(safe-area-inset-bottom,0px))!important;
+}
+.status-card{
+  min-height:72px!important;
+  padding:var(--space-3) var(--space-4) var(--space-3) 20px!important;
+  border-radius:var(--content-radius)!important;
+}
+.status-card strong{font-size:14px!important;line-height:1.4!important;}
+.status-card span{font-size:12px!important;line-height:1.5!important;}
+.map-legend{
+  left:var(--map-edge)!important;
+  bottom:calc(var(--map-edge) + 72px + var(--map-gap) + env(safe-area-inset-bottom,0px))!important;
+  min-height:40px!important;
+  padding:9px var(--space-3)!important;
+  border-radius:var(--content-radius)!important;
+  font-size:11px!important;
+  line-height:1.4!important;
+}
+.leaflet-popup-content{margin:var(--space-3) var(--space-4)!important;}
+.popup-title{font-size:14px!important;line-height:1.4!important;}
+.popup-meta{margin:2px 0 var(--space-2)!important;font-size:11px!important;line-height:1.4!important;}
+
+@media(max-width:920px){
+  .topbar{min-height:76px!important;padding:10px var(--space-4)!important;}
+  .side-pane{padding:var(--space-5) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom,0px))!important;}
+  .tab-panel{padding-top:var(--space-5)!important;}
+  .tab-btn{min-width:92px!important;}
+}
+
+@media(max-width:560px){
+  body{font-size:15px!important;}
+  .topbar{min-height:72px!important;padding:9px var(--space-3)!important;gap:var(--space-3)!important;}
+  .brand{gap:10px!important;}
+  .brand h1{font-size:22px!important;}
+  .brand-eyebrow{font-size:9px!important;}
+  .brand-mark{width:42px!important;height:42px!important;}
+  .trip-ribbon{gap:0!important;margin-right:0!important;}
+  .trip-pill{padding:6px 10px!important;}
+  .side-pane{padding:var(--space-4) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom,0px))!important;}
+  .section-head h2{font-size:30px!important;line-height:1.16!important;}
+  .section-head{margin-bottom:var(--space-4)!important;}
+  .trip-summary{margin-bottom:var(--space-5)!important;}
+  .metric{min-height:60px!important;padding:var(--space-3)!important;}
+  .stop-main{padding:14px var(--space-1)!important;}
+  .day-ticket-guide,.transport-recommend{padding:var(--space-3)!important;gap:var(--space-3)!important;}
+  .poi-card{gap:var(--space-3)!important;padding:var(--space-3) 0!important;}
+  .transport-card{padding:var(--space-4) var(--space-1)!important;}
+  .app-card{padding:var(--space-3) var(--space-1)!important;}
+  .day-picker{gap:6px!important;padding:6px!important;}
+  .day-picker .seg-btn{min-width:70px!important;padding:6px var(--space-2)!important;}
+  .day-picker .seg-btn[data-day="0"]{min-width:82px!important;}
+}
