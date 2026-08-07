@@ -7,10 +7,10 @@
   function syncThemeControl() {
     if (!themeBtn || !app) return;
     const dark = app.dataset.theme === 'dark';
-    themeBtn.textContent = 'Theme';
+    themeBtn.textContent = dark ? 'Light' : 'Dark';
     themeBtn.setAttribute('aria-pressed', String(dark));
-    themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-    themeBtn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    themeBtn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
   }
 
   function syncTabs() {
