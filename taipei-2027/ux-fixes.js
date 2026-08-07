@@ -43,6 +43,122 @@
     document.head.appendChild(neon);
   }
 
+  /* Make the app theme state authoritative for the whole document. */
+  const themeApp=document.getElementById('app');
+  function syncDocumentTheme(){
+    if(!themeApp) return;
+    const theme=themeApp.dataset.theme==='light'?'light':'dark';
+    document.documentElement.dataset.theme=theme;
+    document.body.dataset.theme=theme;
+    document.documentElement.style.colorScheme=theme;
+  }
+  syncDocumentTheme();
+  if(themeApp){
+    new MutationObserver(syncDocumentTheme).observe(themeApp,{attributes:true,attributeFilter:['data-theme']});
+  }
+
+  /* Explicit final light/dark surfaces so the switch always produces a visible change. */
+  if(!document.getElementById('theme-final-fix')){
+    const themeStyle=document.createElement('style');
+    themeStyle.id='theme-final-fix';
+    themeStyle.textContent=`
+      html[data-theme="light"],
+      html[data-theme="light"] body{
+        background:#F7FAFF!important;
+        color:#111827!important;
+      }
+      html[data-theme="light"] #app{
+        --paper:#F7FAFF!important;
+        --paper-2:#ECF3FF!important;
+        --surface:#FFFFFF!important;
+        --surface-strong:#F8FBFF!important;
+        --ink:#111827!important;
+        --ink-soft:#4B5563!important;
+        --line:rgba(77,91,255,.20)!important;
+        --line-strong:rgba(176,38,255,.26)!important;
+        --ui-bg:#F7FAFF!important;
+        --ui-panel:#FFFFFF!important;
+        --ui-surface:#FFFFFF!important;
+        --ui-surface-muted:#EEF4FF!important;
+        --ui-ink:#111827!important;
+        --ui-muted:#4B5563!important;
+        --ui-line:rgba(77,91,255,.20)!important;
+        --ui-line-strong:rgba(176,38,255,.26)!important;
+        background:#F7FAFF!important;
+        color:#111827!important;
+      }
+      html[data-theme="light"] #app .topbar,
+      html[data-theme="light"] #app .side-pane,
+      html[data-theme="light"] #app .tabs,
+      html[data-theme="light"] #app .metric,
+      html[data-theme="light"] #app .stop-card,
+      html[data-theme="light"] #app .transport-card,
+      html[data-theme="light"] #app .app-card,
+      html[data-theme="light"] #app .icon-btn,
+      html[data-theme="light"] #app .mini-link,
+      html[data-theme="light"] #app .transport-links a,
+      html[data-theme="light"] #app .itinerary-ticket-links a,
+      html[data-theme="light"] #app select,
+      html[data-theme="light"] #app input[type="number"]{
+        background:#FFFFFF!important;
+        color:#111827!important;
+        border-color:rgba(77,91,255,.20)!important;
+      }
+      html[data-theme="light"] #app .side-pane{background:#FFFFFF!important;}
+      html[data-theme="light"] #app .tab-btn{color:#596274!important;}
+      html[data-theme="light"] #app .tab-btn.active{color:#111827!important;}
+      html[data-theme="light"] #app .status-card,
+      html[data-theme="light"] #app .map-legend{
+        background:rgba(255,255,255,.96)!important;
+        color:#111827!important;
+        border-color:rgba(77,91,255,.20)!important;
+      }
+      html[data-theme="light"] #app .status-card span{color:#4B5563!important;}
+      html[data-theme="light"] #app .leaflet-popup-content-wrapper,
+      html[data-theme="light"] #app .leaflet-popup-tip,
+      html[data-theme="light"] #app .leaflet-control-zoom a{
+        background:#FFFFFF!important;
+        color:#111827!important;
+      }
+      html[data-theme="light"] #app .leaflet-tile-pane{
+        filter:saturate(1.05) contrast(1.02) brightness(1.02)!important;
+      }
+
+      html[data-theme="dark"],
+      html[data-theme="dark"] body{
+        background:#070A12!important;
+        color:#F7FAFF!important;
+      }
+      html[data-theme="dark"] #app{
+        --paper:#070A12!important;
+        --paper-2:#0D1220!important;
+        --surface:#101623!important;
+        --surface-strong:#151C2B!important;
+        --ink:#F7FAFF!important;
+        --ink-soft:#B9C5D8!important;
+        --line:rgba(0,255,209,.22)!important;
+        --line-strong:rgba(217,0,255,.38)!important;
+        --ui-bg:#070A12!important;
+        --ui-panel:#0D1220!important;
+        --ui-surface:#101623!important;
+        --ui-surface-muted:#182136!important;
+        --ui-ink:#F7FAFF!important;
+        --ui-muted:#B9C5D8!important;
+        --ui-line:rgba(0,255,209,.22)!important;
+        --ui-line-strong:rgba(217,0,255,.38)!important;
+        background:#070A12!important;
+        color:#F7FAFF!important;
+      }
+      html[data-theme="dark"] #app .topbar{background:rgba(7,10,18,.94)!important;}
+      html[data-theme="dark"] #app .side-pane{background:linear-gradient(180deg,#0D1220,#090D17)!important;}
+      html[data-theme="dark"] #app .tabs{background:#0D1220!important;}
+      html[data-theme="dark"] #app .status-card,
+      html[data-theme="dark"] #app .map-legend{background:rgba(7,10,18,.94)!important;color:#F7FAFF!important;}
+      html[data-theme="dark"] #app .leaflet-tile-pane{filter:saturate(1.24) contrast(1.08) brightness(.78)!important;}
+    `;
+    document.head.appendChild(themeStyle);
+  }
+
   /* Final type override. */
   if(!document.getElementById('biryani-final-type-fix')){
     const finalType=document.createElement('style');
