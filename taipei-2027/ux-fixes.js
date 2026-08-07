@@ -37,6 +37,52 @@
     document.head.appendChild(consistency);
   }
 
+  /* Final type override. The #app selector intentionally outranks older !important
+     serif declarations so every live UI element uses Biryani. */
+  if(!document.getElementById('biryani-final-type-fix')){
+    const finalType=document.createElement('style');
+    finalType.id='biryani-final-type-fix';
+    finalType.textContent=`
+      #app,
+      #app *,
+      #app *::before,
+      #app *::after{
+        font-family:"Biryani",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+      }
+
+      #app h1,
+      #app h2,
+      #app h3,
+      #app h4,
+      #app h5,
+      #app h6,
+      #app .brand h1,
+      #app .section-head h2,
+      #app .stop-title,
+      #app .poi-copy h3,
+      #app .transport-card h3,
+      #app .transport-recommend h3,
+      #app .app-card h3,
+      #app .popup-title,
+      #app .day-ticket-guide strong{
+        font-family:"Biryani",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+        font-weight:600!important;
+      }
+
+      #app .brand h1,
+      #app .section-head h2{
+        letter-spacing:-.015em!important;
+      }
+
+      #app .brand-eyebrow,
+      #app .panel-kicker,
+      #app .ticket-kicker{
+        font-weight:600!important;
+      }
+    `;
+    document.head.appendChild(finalType);
+  }
+
   if(!document.querySelector('link[rel="icon"]')){
     const favicon=document.createElement('link');
     favicon.rel='icon';
