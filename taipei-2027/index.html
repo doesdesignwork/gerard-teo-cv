@@ -14,6 +14,7 @@
 <link href="redesign.css" rel="stylesheet"/>
 <link href="ux-fixes.css" rel="stylesheet"/>
 <link href="map-ui-hotfix.css" rel="stylesheet"/>
+<link href="transport.css" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#tab-itinerary">Skip to itinerary</a>
@@ -59,6 +60,7 @@
 <button class="tab-btn active" data-tab="itinerary" type="button">Itinerary</button>
 <button class="tab-btn" data-tab="nearby" type="button">Around me</button>
 <button class="tab-btn" data-tab="costs" type="button">Costs</button>
+<button class="tab-btn" data-tab="tickets" type="button">Tickets</button>
 <button class="tab-btn" data-tab="apps" type="button">Apps</button>
 </nav>
 <section class="tab-panel active" id="tab-itinerary">
@@ -96,6 +98,58 @@
 <div class="cost-list" id="costList"></div>
 <div class="cost-total"><span>Estimated local spend for two</span><strong id="costTwd">TWD 0–0</strong><span id="costSgd">SGD 0–0</span></div>
 <div class="audit-list" id="auditList"></div>
+</section>
+<section class="tab-panel" id="tab-tickets">
+<div class="panel-kicker">Getting around</div>
+<div class="section-head"><div><h2>Transport tickets</h2><p>Exactly what to buy, where to get it, and how to use it.</p></div></div>
+<div class="transport-recommend">
+<div class="transport-badge">悠</div>
+<div><h3>Best choice for this trip: buy 2 EasyCards on arrival</h3><p>At Taoyuan Airport MRT, buy one Adult EasyCard per person from a Card Vending / Add Value Machine or the station information counter. The standard empty card currently costs NT$100, then add stored value. Start with about NT$800–1,000 each and top up later if needed.</p></div>
+</div>
+<div class="transport-flow" aria-label="Arrival transport ticket flow">
+<div><b>1 · Airport</b><span>Follow signs to Airport MRT</span></div>
+<div><b>2 · Buy</b><span>Get 2 Adult EasyCards</span></div>
+<div><b>3 · Top up</b><span>Add travel credit at machine/counter</span></div>
+<div><b>4 · Ride</b><span>Tap in and out to A1 Taipei Main</span></div>
+</div>
+<div class="transport-grid">
+<article class="transport-card">
+<div class="transport-card-head"><div><h3>EasyCard · recommended</h3><p class="transport-sub">One card for Airport MRT, Taipei Metro, buses and many small purchases.</p></div><span class="transport-price">Card NT$100*</span></div>
+<ul class="transport-steps">
+<li><span>1</span><div><strong>Where to buy:</strong> Taoyuan Metro and Taipei Metro station information counters; selected card vending machines; 7-Eleven, FamilyMart, Hi-Life and OK Mart.</div></li>
+<li><span>2</span><div><strong>Top up:</strong> Metro information counters, add-value machines and participating convenience stores. Taoyuan Metro machines accept top-ups in NT$100 multiples.</div></li>
+<li><span>3</span><div><strong>How to use:</strong> Touch the card at the gate when entering and leaving MRT systems. On buses, use the onboard EasyCard reader and follow the displayed tap instructions.</div></li>
+</ul>
+<div class="transport-links"><a href="https://www.easycard.com.tw/en/easycard?cls=1521769569&id=1521769904" target="_blank" rel="noopener">EasyCard official</a><a href="https://www.easycard.com.tw/en/introduction?id=2" target="_blank" rel="noopener">Top-up locations</a></div>
+</article>
+<article class="transport-card">
+<div class="transport-card-head"><div><h3>Taoyuan Airport MRT</h3><p class="transport-sub">For the airport ↔ A1 Taipei Main Station journeys.</p></div><span class="transport-price">EasyCard or single trip</span></div>
+<ul class="transport-steps">
+<li><span>A</span><div><strong>Easiest:</strong> use your EasyCard. Touch in at the airport station gate and touch out at A1 Taipei Main Station.</div></li>
+<li><span>B</span><div><strong>Single-journey alternative:</strong> buy at the touch-screen ticket machine or station information counter. Machines support multiple languages.</div></li>
+<li><span>C</span><div><strong>If buying a single ticket:</strong> select destination and quantity, pay at the machine, collect the ticket and change, then touch at entry and follow the exit-gate instructions.</div></li>
+</ul>
+<div class="transport-links"><a href="https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/usage.html" target="_blank" rel="noopener">How to buy</a><a href="https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/timetable.php" target="_blank" rel="noopener">Airport MRT timetable</a></div>
+</article>
+<article class="transport-card">
+<div class="transport-card-head"><div><h3>Taipei Metro</h3><p class="transport-sub">For your city sightseeing days.</p></div><span class="transport-price">Single trips NT$20–65*</span></div>
+<ul class="transport-steps">
+<li><span>1</span><div><strong>Recommended:</strong> continue using EasyCard. It removes the need to buy a ticket before every ride.</div></li>
+<li><span>2</span><div><strong>Single-journey tickets:</strong> available from Metro ticketing machines and all station information counters. QR single-journey tickets are also available through supported Taipei Metro channels.</div></li>
+<li><span>3</span><div><strong>Unlimited options:</strong> the current One-Day Pass is NT$150 and the 24-hour Pass is NT$180, both sold at station information counters. For this itinerary, pay-as-you-go EasyCard is the safer default unless you plan a very MRT-heavy day.</div></li>
+</ul>
+<div class="transport-links"><a href="https://english.metro.taipei/cp.aspx?n=BECC2E7AC426F659" target="_blank" rel="noopener">Taipei Metro ticket guide</a><a href="https://english.metro.taipei/cp.aspx?n=BECC2E7AC426F659&s=01872DBE36650923" target="_blank" rel="noopener">Travel passes</a></div>
+</article>
+<article class="transport-card">
+<div class="transport-card-head"><div><h3>Public buses</h3><p class="transport-sub">Useful when buses are more direct than the MRT.</p></div><span class="transport-price">Use EasyCard</span></div>
+<ul class="transport-steps">
+<li><span>1</span><div>Board with your EasyCard ready and use the card reader as instructed onboard.</div></li>
+<li><span>2</span><div>Keep enough stored value on the card before boarding. Top up at Metro stations or convenience stores.</div></li>
+<li><span>3</span><div>Use Google Maps or Bus+ for the correct stop, bus number and live arrival information.</div></li>
+</ul>
+</article>
+</div>
+<div class="transport-note"><strong>2027 check:</strong> ticket prices and payment methods above are current as of August 2026. Reconfirm them shortly before the trip. Your scheduled Taipei trip check will catch meaningful transport changes closer to departure.</div>
 </section>
 <section class="tab-panel" id="tab-apps">
 <div class="panel-kicker">Travel toolkit</div>
