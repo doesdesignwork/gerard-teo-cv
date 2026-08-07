@@ -37,8 +37,7 @@
     document.head.appendChild(consistency);
   }
 
-  /* Final type override. The #app selector intentionally outranks older !important
-     serif declarations so every live UI element uses Biryani. */
+  /* Final type override. */
   if(!document.getElementById('biryani-final-type-fix')){
     const finalType=document.createElement('style');
     finalType.id='biryani-final-type-fix';
@@ -82,6 +81,113 @@
     `;
     document.head.appendChild(finalType);
   }
+
+  /* Final colour + itinerary spacing correction. */
+  if(!document.getElementById('taipei-final-ui-fix')){
+    const finalUI=document.createElement('style');
+    finalUI.id='taipei-final-ui-fix';
+    finalUI.textContent=`
+      :root,
+      [data-theme="dark"]{
+        --coral:#FF6700!important;
+        --coral-deep:#FF6700!important;
+        --ui-accent:#FF6700!important;
+        --ui-accent-strong:#FF6700!important;
+      }
+
+      #app .leaflet-overlay-pane path[stroke="#d94f33"],
+      #app .leaflet-overlay-pane path[stroke="#D94F33"],
+      #app .leaflet-overlay-pane path[stroke="rgb(217, 79, 51)"]{
+        stroke:#FF6700!important;
+      }
+
+      #app [style*="#d94f33"],
+      #app [style*="#D94F33"]{
+        --day-color:#FF6700!important;
+      }
+
+      #app .day-ticket-guide{
+        margin-left:14px!important;
+        margin-right:0!important;
+        margin-bottom:16px!important;
+      }
+
+      #app .timeline{
+        padding-left:14px!important;
+        margin-top:0!important;
+        gap:0!important;
+        border-top:0!important;
+      }
+
+      #app .timeline::before{
+        top:26px!important;
+        bottom:26px!important;
+      }
+
+      #app .stop-main{
+        grid-template-columns:36px minmax(0,1fr) 24px!important;
+        column-gap:12px!important;
+        min-height:0!important;
+        padding:14px 4px 10px!important;
+        align-items:center!important;
+      }
+
+      #app .stop-number{
+        width:36px!important;
+        height:36px!important;
+      }
+
+      #app .stop-title{margin:0!important;}
+      #app .stop-meta{margin-top:2px!important;}
+
+      #app details.stop-details summary{
+        min-height:36px!important;
+        padding:2px 4px 10px 52px!important;
+      }
+
+      #app .stop-body{
+        padding:0 4px 14px 52px!important;
+      }
+
+      #app .stop-card::before{
+        top:24px!important;
+      }
+
+      @media(max-width:560px){
+        #app .day-ticket-guide{
+          margin-bottom:14px!important;
+        }
+        #app .stop-main{
+          padding:12px 4px 8px!important;
+        }
+        #app details.stop-details summary{
+          min-height:34px!important;
+          padding-bottom:8px!important;
+        }
+        #app .stop-body{
+          padding-bottom:12px!important;
+        }
+      }
+    `;
+    document.head.appendChild(finalUI);
+  }
+
+  /* Keep the Day 1 route/markers on the exact requested orange after initial map render. */
+  try{
+    if(typeof dayColours!=='undefined') dayColours[1]='#FF6700';
+  }catch(e){}
+
+  function recolourDayOne(){
+    document.querySelectorAll('.leaflet-overlay-pane path').forEach(path=>{
+      const stroke=(path.getAttribute('stroke')||'').toLowerCase().replace(/\s/g,'');
+      if(stroke==='#d94f33'||stroke==='rgb(217,79,51)') path.setAttribute('stroke','#FF6700');
+    });
+    document.querySelectorAll('[style*="#d94f33"],[style*="#D94F33"]').forEach(el=>{
+      el.style.setProperty('--day-color','#FF6700','important');
+    });
+  }
+  recolourDayOne();
+  new MutationObserver(recolourDayOne).observe(document.getElementById('app')||document.body,{childList:true,subtree:true});
 
   if(!document.querySelector('link[rel="icon"]')){
     const favicon=document.createElement('link');
