@@ -3,10 +3,18 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-<meta content="#17211f" name="theme-color"/>
+<meta content="#070A12" name="theme-color"/>
+<meta content="light dark" name="color-scheme"/>
 <meta content="A free interactive Taipei itinerary map for 20–24 August 2027, with live location tracking, nearby places and transparent trip costs." name="description"/>
+<meta property="og:title" content="Taipei 2027 · Couple Trip Companion"/>
+<meta property="og:description" content="A map-first Taipei couple itinerary with live location, nearby places, ticket guidance and transparent costs."/>
+<meta property="og:type" content="website"/>
 <title>Taipei 2027 · Couple Trip Companion</title>
 <link href="https://tile.openstreetmap.org" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Biryani:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
 <link href="fixes.css" rel="stylesheet"/>
@@ -15,6 +23,11 @@
 <link href="ux-fixes.css" rel="stylesheet"/>
 <link href="map-ui-hotfix.css" rel="stylesheet"/>
 <link href="transport.css" rel="stylesheet"/>
+<link href="skill-redesign.css" rel="stylesheet"/>
+<link href="biryani-consistency.css" rel="stylesheet"/>
+<link href="neon-vibrant.css" rel="stylesheet"/>
+<link href="itinerary-customizer.css" rel="stylesheet"/>
+<link href="final-ui.css" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#tab-itinerary">Skip to itinerary</a>
@@ -163,11 +176,13 @@
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script src="ux-fixes.js"></script>
 <script src="itinerary-ticketing.js"></script>
 <script src="popup-links.js"></script>
 <script src="nearby.js"></script>
 <script src="extras.js"></script>
 <script src="focus.js"></script>
-<script src="ux-fixes.js"></script>
+<script src="itinerary-customizer.js"></script>
+<script src="skill-redesign.js"></script>
 </body>
 </html>
