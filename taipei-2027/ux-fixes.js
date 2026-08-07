@@ -1,10 +1,40 @@
 (function(){
+  /* Load the requested Biryani family before the final visual layers. */
+  if(!document.querySelector('link[data-taipei-font="biryani-preconnect"]')){
+    const preconnect=document.createElement('link');
+    preconnect.rel='preconnect';
+    preconnect.href='https://fonts.googleapis.com';
+    preconnect.dataset.taipeiFont='biryani-preconnect';
+    document.head.appendChild(preconnect);
+  }
+  if(!document.querySelector('link[data-taipei-font="biryani-gstatic"]')){
+    const gstatic=document.createElement('link');
+    gstatic.rel='preconnect';
+    gstatic.href='https://fonts.gstatic.com';
+    gstatic.crossOrigin='anonymous';
+    gstatic.dataset.taipeiFont='biryani-gstatic';
+    document.head.appendChild(gstatic);
+  }
+  if(!document.querySelector('link[data-taipei-font="biryani"]')){
+    const font=document.createElement('link');
+    font.rel='stylesheet';
+    font.href='https://fonts.googleapis.com/css2?family=Biryani:wght@200;300;400;600;700;800;900&display=swap';
+    font.dataset.taipeiFont='biryani';
+    document.head.appendChild(font);
+  }
+
   /* Keep the redesign isolated and last in the cascade without changing the app stack. */
   if(!document.querySelector('link[href="skill-redesign.css"]')){
     const redesign=document.createElement('link');
     redesign.rel='stylesheet';
     redesign.href='skill-redesign.css';
     document.head.appendChild(redesign);
+  }
+  if(!document.querySelector('link[href="biryani-consistency.css"]')){
+    const consistency=document.createElement('link');
+    consistency.rel='stylesheet';
+    consistency.href='biryani-consistency.css';
+    document.head.appendChild(consistency);
   }
 
   if(!document.querySelector('link[rel="icon"]')){
