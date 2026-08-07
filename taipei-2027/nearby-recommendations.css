@@ -1,0 +1,64 @@
+/* Around Me recommendation + map-pin feature styles. Component-only; final-ui.css remains the global design system. */
+#app .poi-title-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:var(--s2,8px);
+}
+#app .poi-title-row h3{min-width:0;margin:0!important;}
+#app .recommend-badge{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  padding:4px 7px;
+  border:1px solid #FFE600;
+  border-radius:6px;
+  background:#FFE600;
+  color:#070A12;
+  font-size:10px;
+  line-height:1.2;
+  font-weight:600;
+  white-space:nowrap;
+}
+#app .poi-card.is-recommended .poi-media{
+  outline:1px solid rgba(255,230,0,.42);
+  outline-offset:-1px;
+}
+#app .poi-map-btn{
+  appearance:none;
+  cursor:pointer;
+  text-decoration:none;
+}
+#app .poi-map-btn.is-pinned{
+  background:#00FFD1!important;
+  border-color:#00FFD1!important;
+  color:#04110E!important;
+}
+.nearby-result-pin-wrap{
+  background:transparent!important;
+  border:0!important;
+}
+.nearby-result-pin{
+  width:26px;
+  height:26px;
+  position:relative;
+  transform:rotate(45deg);
+  border:2px solid #070A12;
+  border-radius:50% 50% 50% 4px;
+  background:#00FFD1;
+  box-shadow:0 0 0 2px rgba(255,255,255,.8),0 4px 12px rgba(0,0,0,.28);
+}
+.nearby-result-pin span{
+  position:absolute;
+  width:8px;
+  height:8px;
+  top:7px;
+  left:7px;
+  border-radius:50%;
+  background:#04110E;
+}
+@media(max-width:560px){
+  #app .poi-title-row{display:grid;grid-template-columns:1fr;gap:6px;}
+  #app .recommend-badge{justify-self:start;}
+}
